@@ -5,11 +5,35 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/logo-shop-build.png">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/navbarAfterLogin.css">
 </head>
 <body>
    
-    <button onclick="logOut()">Log Out</button>
+    <nav class="navbar navbar-after-login">
+        <div >
+            <a href="index.html" class="logo-navbar">
+                <img src="assets/logo-shop-build.png" alt="">
+                Shop Build
+            </a>
+        </div>
+        <div class="profile">
+            <img src="assets/profile.png" class="profile-image" alt="">
+            <b id="profileName">Admin</b>
+            <img src="assets/down-arrow.svg" class="profile-arrow" alt="">
+        </div>
+        <div class="dropdown">
+            <a href="">Edit Profile</a>
+            <a onclick="logOut()">Log Out</a>
+        </div>
+    </nav>
 
+
+
+
+    <script>page='dashboard';login='after';</script>
+
+    <script src="js/source.js"></script>
     <script src="js/checkLogin.js"></script>
     <script>checkLogin()</script>
 </body>

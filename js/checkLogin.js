@@ -21,9 +21,17 @@ if(localStorage.getItem('expiresLogin')){
 
 function checkLogin(){
     if(localStorage.getItem('login') === null || localStorage.getItem('idUser') === null || localStorage.getItem('expiresLogin') === null){
-        document.location.href = 'login.html';
+        if(login === 'after'){
+            if(page !== 'login'){
+                document.location.href = 'login.html';
+            }
+        }
     }else{
-        document.location.href = 'dashboard.html';
+        if(login === 'before'){
+            if(page !== 'dashboard'){
+               document.location.href = 'dashboard.html';
+            }
+        }
     }
 }
 

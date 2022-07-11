@@ -1,0 +1,25 @@
+.navbar-after-login{
+    justify-content: space-between !important;
+}
+
+.profile-image{
+    border-radius: 50%;
+}
+
+.profile{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.profile b{
+    font-weight: 600;
+    font-size: 19px;
+    margin-top: 4px;
+}
+
+.profile-arrow{
+    margin-top: 4px;
+    width: 16px !important;
+}
