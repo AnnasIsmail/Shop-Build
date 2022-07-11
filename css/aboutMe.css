@@ -1,0 +1,23 @@
+.logo-about-me{
+    border-radius: 10px;
+}
+
+h2{
+    padding-bottom: 10px !important;
+}
+
+.label-about-me{
+    text-align: justify;
+}
+
+.label-about-me b{
+    font-weight: 600;
+}
+
+
+.container-social-media{
+    /* width: 50%; */
+    padding-top: 10px;
+    display: flex;
+    gap: 10px;
+}

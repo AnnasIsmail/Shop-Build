@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Shop Build</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" href="assets/logo-shop-build.png">
+</head>
+<body>
+    <nav class="navbar">
+        <div >
+            <a href="index.html" class="logo-navbar">
+                <img src="assets/logo-shop-build.png" alt="">
+                Shop Build
+            </a>
+        </div>
+        <div class="icon-responsive-container" onclick="navbarResponsiveClick()">
+            <img class="icon-responsive" src="assets/icon-responsive.svg" alt="">
+        </div>
+        <div class="navigation topNavbar" id="NavbarResponsive">
+            <a href="index.html">Home</a>
+            <a href="aboutUs.html">About Me</a>
+            <a href="login.html" class="on-page">Login</a>
+            <a href="signUp.html">Sign Up</a>
+        </div>
+    </nav>
+
+    <main>
+        <form class="container-child-main">
+            <div class="child-main-left">
+                <img class="logo" src="assets/logo-home.png" alt="">
+                <h1>Shop Build</h1>
+            </div>
+            <div class="child-main-right">
+                <h2>Login With Your Account</h2>
+                <input type="text" placeholder="Username">
+                <input type="password" placeholder="Password">
+                <div class="container-ingat-saya">
+                    <input type="checkbox" value="Ingat Saya" class="ingat-saya" name="ingat" id="ingat">
+                    <label for="ingat">Ingat Saya</label>
+                </div>
+                <a class="button-login" href="">Login</a>
+                <p>Belum punya akun? <a href="signUp.html">Sign Up</a></p>
+            </div>
+        </form>
+    </main>
+    
+    <script src="js/navbar.js"></script>
+</body>
+</html>

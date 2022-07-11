@@ -1,0 +1,194 @@
+main{
+    display: grid;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 70px;
+    margin-bottom: 30px;
+    height: calc(100vh - 60px);
+    gap: 30px;
+}
+
+main .container-child-main{
+    height: max-content;
+    min-height: 500px;
+    width: 70vw;
+    min-width: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-evenly;
+
+    background: rgba( 126, 132, 242, 0.8 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 11.5px );
+    -webkit-backdrop-filter: blur( 11.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    overflow: auto;
+}
+
+.child-main-left{
+    background: rgba( 126, 132, 242, 0.8 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    gap: 10px;
+    color: #023E73;
+}
+
+.logo{
+    width: 250px;
+}
+
+.child-main-left h1{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.child-main-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    gap: 5px;
+    color: #023E73;
+    padding: 20px;
+}
+
+.child-main-right h2{
+    font-size: 27px;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+
+.child-main-right p{
+    margin-top: 10px;
+    color: #023E73;
+}
+
+.child-main-right p a{
+    color: #023E73;
+    font-weight: 600;
+}
+
+.child-main-right label{
+    width: 50%;
+}
+
+.child-main-right input{
+    background: rgba( 255, 255, 255, 0.8 );
+    box-shadow: 0 2px 10px 0 rgba( 31, 38, 135, 0.27 );
+    backdrop-filter: blur( 11.5px );
+    -webkit-backdrop-filter: blur( 11.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+    width: 50%;
+    height: 20px;
+    gap: 5px;
+    padding: 10px; 
+    margin-bottom: 10px;
+}
+
+.container-ingat-saya{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ingat-saya{
+    width: 15px !important;
+    height: 15px !important;
+    margin: 0 !important;
+}
+
+.child-main-right textarea{
+    background: rgba( 255, 255, 255, 0.8 );
+    box-shadow: 0 2px 10px 0 rgba( 31, 38, 135, 0.27 );
+    backdrop-filter: blur( 11.5px );
+    -webkit-backdrop-filter: blur( 11.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+    width: 50%;
+    gap: 5px;
+    padding: 10px; 
+    margin-bottom: 10px;
+    resize: vertical;
+}
+
+.child-main-right .button-login{
+    background: #023E73;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.27 );
+    backdrop-filter: blur( 11.5px );
+    -webkit-backdrop-filter: blur( 11.5px );
+    border-radius: 50px;
+
+    margin-top: 10px;
+    width: 50%;
+    display: flex;
+    gap: 5px;
+    font-weight: 600;
+    color: rgba( 126, 132, 242, 0.8 );
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    padding: 10px 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.child-main-right .button-login:hover{
+    background: rgba( 126, 132, 242, 0.8 );
+    color: #023E73;
+}
+
+.hidden{
+    display: none;
+}
+
+.error-massage{
+    color: rgba( 255, 0, 0, 0.4 ) !important;
+    font-weight: 600;
+}
+
+.error{
+    background: rgba( 255, 0, 0, 0.4 ) !important;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 ) !important;
+    backdrop-filter: blur( 15.5px ) !important;
+    -webkit-backdrop-filter: blur( 15.5px ) !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba( 255, 255, 255, 0.18 ) !important;
+
+}
+
+.error::placeholder {
+    color: white !important;
+  }
+
+@media only screen and (max-width: 1200px) {
+    main{
+        padding: 10px;
+        padding-top: 70px;
+    }
+
+    main .container-child-main{
+        width: 90vw;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    main .container-child-main{
+        grid-template-columns: 1fr;
+    }
+
+    .child-main-left , .child-main-right{
+        padding: 50px 0;
+    }
+}

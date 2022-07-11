@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Shop Build</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" href="assets/logo-shop-build.png">
+</head>
+<body>
+    <nav class="navbar">
+        <div >
+            <a href="index.html" class="logo-navbar">
+                <img src="assets/logo-shop-build.png" alt="">
+                Shop Build
+            </a>
+        </div>
+        <div class="icon-responsive-container" onclick="navbarResponsiveClick()">
+            <img class="icon-responsive" src="assets/icon-responsive.svg" alt="">
+        </div>
+        <div class="navigation topNavbar" id="NavbarResponsive">
+            <a href="index.html">Home</a>
+            <a href="aboutUs.html">About Me</a>
+            <a href="login.html">Login</a>
+            <a href="signUp.html" class="on-page">Sign Up</a>
+        </div>
+    </nav>
+
+    <main>
+        <form class="container-child-main">
+            <div class="child-main-left">
+                <img class="logo" src="assets/logo-home.png" alt="">
+                <h1>Shop Build</h1>
+            </div>
+            <div class="child-main-right">
+                <h2>Create New Account</h2>
+                <p class="error-massage hidden" id="errorUsername"></p>
+                <p class="error-massage hidden" id="errorAddress"></p>
+                <p class="error-massage hidden" id="errorEmail"></p>
+                <p class="error-massage hidden" id="errorDOB"></p>
+                <p class="error-massage hidden" id="errorPassword"></p>
+                <p class="error-massage hidden" id="errorPhoneNumber"></p>
+                <label for="name">Name</label>
+                <input type="text" placeholder="Name" id="name" name="name" onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)">
+                <label for="address">Address</label>
+                <textarea name="address" id="address" placeholder="Address" rows="3" onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)"></textarea>
+                <label for="email">Email</label>
+                <input type="email" placeholder="Email" id="email" name="email"  onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)">
+                <label for="dob">Tanggal Lahir</label>
+                <input type="date" name="DOB" id="dob" onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)">
+                <label for="password">Password</label>
+                <input type="password" placeholder="Password" id="password" name="password"  onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)">
+                <label for="pn">Phone Number</label>
+                <input type="number" placeholder="Phone Number" id="pn" name="phone-number"  onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)">
+                <a class="button-login" onclick="validationRegister()">Sign Up</a>
+                <p>Sudah mempunyai akun? <a href="login.html">Log In</a></p>
+            </div>
+        </form>
+    </main>
+    <script src="js/validation.js"></script>
+    <script src="js/navbar.js"></script>
+</body>
+</html>

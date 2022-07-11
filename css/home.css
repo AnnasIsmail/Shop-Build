@@ -1,0 +1,44 @@
+main{
+    display: grid;
+    grid-template-columns: 50vw 350px;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 60px;
+    height: calc(100vh - 60px);
+    gap: 30px;
+}
+
+main div h2{
+    font-weight: 600;
+    font-size: 30px;
+    color: #023E73;
+    padding-bottom: 8px;
+}
+
+main div p{
+    color: #023E73;
+    text-align: justify;
+}
+
+main img{
+    width: 100%;
+}
+
+@media only screen and (max-width: 780px) {
+    main{
+        grid-template-columns: 70vw;
+        justify-content: center;
+        justify-items: center;
+    }
+
+    main img{
+        width: 350px;
+    }
+
+}
+
+/* @media only screen and (max-width: 780px) {
+    main{
+        grid-template-columns: 50vw 240px;
+    }
+} */
