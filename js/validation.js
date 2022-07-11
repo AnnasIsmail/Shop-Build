@@ -13,10 +13,17 @@ Password = false;
 PhoneNumber = false;
 
 function validationRegister(){
+    id = 0;
+    user.forEach(data=>{
+        id = data.id;
+    })
+
     if(validationUName === false || validationAddress === false || validationEmail === false || validationDOB === false || validationPassword === false || validationPhoneNumber === false){
-        console.log('masuk')
+        document.getElementById('errorSubmit').classList.remove('hidden');
+        document.getElementById('errorSubmit').innerHTML = 'Pastikan Seluruh Field sudah terisi dengan benar';
     }else{
         result = {
+            id: id+1,
             name: Name,
             address: Address,
             email: Email,
@@ -25,7 +32,17 @@ function validationRegister(){
             phoneNumber: PhoneNumber
         }
 
-        console.log(result)
+        dataArray = [];
+        userLocal = localStorage.getItem("user");
+        
+        if(userLocal){
+            JSON.parse(userLocal).forEach(data => {
+                dataArray.push(data)
+            });
+        }
+    
+        dataArray.push(result);
+        localStorage.setItem("user", JSON.stringify(dataArray));
         document.location.href = 'login.html'
     }
 }
@@ -38,8 +55,8 @@ function validationRegisterBlur(e){
         e.classList.add('error');
         if(name === 'name'){
             validationUsername = false;
-            document.getElementById('errorUsername').classList.remove('hidden');
-            document.getElementById('errorUsername').innerHTML = 'Field Name tidak boleh kosong';
+            document.getElementById('errorName').classList.remove('hidden');
+            document.getElementById('errorName').innerHTML = 'Field Name tidak boleh kosong';
         }else if(name === 'address'){
             validationPassword = false
             document.getElementById('errorAddress').classList.remove('hidden');
@@ -70,13 +87,21 @@ function validationRegisterBlur(e){
             validationAddressFunction();
         }else if(name === 'email'){
             Email = value;
-            validationEmailFunction();
+            if(page === 'register'){
+                validationEmailFunction();
+            }else if(page === 'login'){
+                validationEmail = true;
+            }
         }else if(name === 'DOB'){
             DOB = value;
             validationDOBFunction();
         }else if(name === 'password'){
             Password = value;
-            validationPasswordFunction();
+            if(page === 'register'){
+                validationPasswordFunction();
+            }else if(page === 'login'){
+                validationPassword = true;
+            }
         }else if(name === 'phone-number'){
             PhoneNumber= value;
             validationPhoneNumberFunction();
@@ -85,12 +110,63 @@ function validationRegisterBlur(e){
 
 }
 
+function validateLoginChange(e){
+    let name =  e.name
+    let value = e.value
+
+    if(value === ""){
+        e.classList.add('error');
+        if(name === 'name'){
+            validationUsername = false;
+        }else if(name === 'address'){
+            validationPassword = false
+        }else if(name === 'email'){
+            validationEmail = false;
+        }else if(name === 'DOB'){
+            validationDOB = false;
+        }else if(name === 'password'){
+            validationPassword = false
+        }else if(name === 'phone-number'){
+            validationPassword = false
+        }
+    }else{
+        if(name === 'name'){
+            Name = value;
+            validationNameFunction();
+        }else if(name === 'address'){
+            Address = value;
+            validationAddressFunction();
+        }else if(name === 'email'){
+            Email = value;
+            if(page === 'register'){
+                validationEmailFunction();
+            }else if(page === 'login'){
+                validationEmail = true;
+            }
+        }else if(name === 'DOB'){
+            DOB = value;
+            validationDOBFunction();
+        }else if(name === 'password'){
+            Password = value;
+            if(page === 'register'){
+                validationPasswordFunction();
+            }else if(page === 'login'){
+                validationPassword = true;
+            }
+        }else if(name === 'phone-number'){
+            PhoneNumber= value;
+            validationPhoneNumberFunction();
+        }
+    }
+}
+
 function validationRegisterFocus(e){
     e.classList.remove('error');
+    document.getElementById('errorSubmit').classList.add('hidden');
     let name =  e.name
     
     if(name === 'name'){
-        document.getElementById('errorUsername').classList.add('hidden');
+        document.getElementById('errorName').classList.add('hidden');
     }else if(name === 'address'){
         document.getElementById('errorAddress').classList.add('hidden');
     }else if(name === 'email'){
@@ -106,8 +182,8 @@ function validationRegisterFocus(e){
 
 function validationNameFunction(){
     if(Name.length <= 8){
-        document.getElementById('errorUsername').classList.remove('hidden');
-        document.getElementById('errorUsername').innerHTML = 'Name harus berisi lebih dari 8 karakter!';
+        document.getElementById('errorName').classList.remove('hidden');
+        document.getElementById('errorName').innerHTML = 'Name harus berisi lebih dari 8 karakter!';
     }else{
         validationUName = true;
     }
@@ -140,6 +216,14 @@ function validationEmailFunction(){
         document.getElementById('errorEmail').classList.remove('hidden');
         document.getElementById('errorEmail').innerHTML = 'Email harus sesuai format!';
     }
+    
+    user.forEach(data=>{
+        if(data.email === Email){
+            validationEmail = false;
+            document.getElementById('errorEmail').classList.remove('hidden');
+            document.getElementById('errorEmail').innerHTML = 'Email sudah digunakan silahkan gunakan email lain!';
+        }
+    })
 }
 
 function validationDOBFunction(){
@@ -178,5 +262,46 @@ function validationPhoneNumberFunction(){
         document.getElementById('errorPhoneNumber').innerHTML = 'Phone Number harus lebih dari 3 angka dan kurang dari 13';
     }else{
         validationPhoneNumber = true;
+    }
+}
+
+
+//Login
+
+function submitLogin(){
+
+    id = 0;
+    console.log(document.getElementById('ingat').checked)
+    if( validationEmail === false || validationPassword === false){
+        document.getElementById('errorSubmit').classList.remove('hidden');
+        document.getElementById('errorSubmit').innerHTML = 'Pastikan Seluruh Field sudah terisi dengan benar';
+    }else{
+        emailValid = false;
+        passwordValid = false;
+
+        user.forEach(data =>{
+            if(data.email === Email){
+                emailValid = true;
+                if(data.password === Password){
+                    passwordValid = true;
+                    id = data.id;
+                }
+            }
+        })
+
+        if(emailValid === true && passwordValid === true){
+            document.getElementById('errorSubmit').classList.add('hidden');
+
+            localStorage.setItem("login", true);
+            localStorage.setItem("idUser", id);
+
+            document.location.href = 'dashboard.html'
+        }else if(emailValid === true && passwordValid === false){
+            document.getElementById('errorSubmit').classList.remove('hidden');
+            document.getElementById('errorSubmit').innerHTML = 'Password salah mohon masukan password dengan sesuai.';
+        }else if(emailValid === false && passwordValid === false){
+            document.getElementById('errorSubmit').classList.remove('hidden');
+            document.getElementById('errorSubmit').innerHTML = 'Email tidak terdaftar.';
+        }
     }
 }

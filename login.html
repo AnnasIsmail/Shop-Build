@@ -28,25 +28,32 @@
     </nav>
 
     <main>
-        <form class="container-child-main">
+        <form class="container-child-main" action="" onsubmit="return false">
             <div class="child-main-left">
                 <img class="logo" src="assets/logo-home.png" alt="">
                 <h1>Shop Build</h1>
             </div>
             <div class="child-main-right">
                 <h2>Login With Your Account</h2>
-                <input type="text" placeholder="Username">
-                <input type="password" placeholder="Password">
+                <p class="error-massage hidden" id="errorSubmit"></p>
+                <p class="error-massage hidden" id="errorEmail"></p>
+                <p class="error-massage hidden" id="errorPassword"></p>
+                <input type="text" placeholder="Email" name="email" onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)" onchange="validateLoginChange(this)">
+                <input type="password" placeholder="Password" name="password" onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)" onchange="validateLoginChange(this)">
                 <div class="container-ingat-saya">
                     <input type="checkbox" value="Ingat Saya" class="ingat-saya" name="ingat" id="ingat">
                     <label for="ingat">Ingat Saya</label>
                 </div>
-                <a class="button-login" href="">Login</a>
+                <button type="submit" class="button-login" onclick="submitLogin()">Login</button>
                 <p>Belum punya akun? <a href="signUp.html">Sign Up</a></p>
             </div>
         </form>
     </main>
     
+    <script>page='login';</script>
+
     <script src="js/navbar.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/source.js"></script>
 </body>
 </html>

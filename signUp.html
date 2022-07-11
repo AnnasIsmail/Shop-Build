@@ -28,37 +28,40 @@
     </nav>
 
     <main>
-        <form class="container-child-main">
+        <form class="container-child-main" action="" onsubmit="return false">
             <div class="child-main-left">
                 <img class="logo" src="assets/logo-home.png" alt="">
                 <h1>Shop Build</h1>
             </div>
             <div class="child-main-right">
                 <h2>Create New Account</h2>
-                <p class="error-massage hidden" id="errorUsername"></p>
+                <p class="error-massage hidden" id="errorSubmit"></p>
+                <p class="error-massage hidden" id="errorName"></p>
                 <p class="error-massage hidden" id="errorAddress"></p>
                 <p class="error-massage hidden" id="errorEmail"></p>
                 <p class="error-massage hidden" id="errorDOB"></p>
                 <p class="error-massage hidden" id="errorPassword"></p>
                 <p class="error-massage hidden" id="errorPhoneNumber"></p>
                 <label for="name">Name</label>
-                <input type="text" placeholder="Name" id="name" name="name" onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)">
+                <input type="text" placeholder="Name" id="name" name="name" onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)" onchange="validateLoginChange(this)">
                 <label for="address">Address</label>
-                <textarea name="address" id="address" placeholder="Address" rows="3" onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)"></textarea>
+                <textarea name="address" id="address" placeholder="Address" rows="3" onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)"></textarea onchange="validateLoginChange(this)">
                 <label for="email">Email</label>
-                <input type="email" placeholder="Email" id="email" name="email"  onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)">
+                <input type="email" placeholder="Email" id="email" name="email"  onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)" onchange="validateLoginChange(this)">
                 <label for="dob">Tanggal Lahir</label>
-                <input type="date" name="DOB" id="dob" onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)">
+                <input type="date" name="DOB" id="dob" onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)" onchange="validateLoginChange(this)">
                 <label for="password">Password</label>
-                <input type="password" placeholder="Password" id="password" name="password"  onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)">
+                <input type="password" placeholder="Password" id="password" name="password"  onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)" onchange="validateLoginChange(this)">
                 <label for="pn">Phone Number</label>
-                <input type="number" placeholder="Phone Number" id="pn" name="phone-number"  onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)">
-                <a class="button-login" onclick="validationRegister()">Sign Up</a>
+                <input type="number" placeholder="Phone Number" id="pn" name="phone-number"  onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)" onchange="validateLoginChange(this)">
+                <button type="submit" class="button-login" onclick="validationRegister()">Sign Up</button>
                 <p>Sudah mempunyai akun? <a href="login.html">Log In</a></p>
             </div>
         </form>
     </main>
+    <script>page='register';</script>
     <script src="js/validation.js"></script>
     <script src="js/navbar.js"></script>
+    <script src="js/source.js"></script>
 </body>
 </html>
