@@ -271,7 +271,8 @@ function validationPhoneNumberFunction(){
 function submitLogin(){
 
     id = 0;
-    console.log(document.getElementById('ingat').checked)
+    ingat = document.getElementById('ingat').checked
+
     if( validationEmail === false || validationPassword === false){
         document.getElementById('errorSubmit').classList.remove('hidden');
         document.getElementById('errorSubmit').innerHTML = 'Pastikan Seluruh Field sudah terisi dengan benar';
@@ -294,6 +295,12 @@ function submitLogin(){
 
             localStorage.setItem("login", true);
             localStorage.setItem("idUser", id);
+
+            if(ingat){
+                localStorage.setItem("expiresLogin", 'infinite');
+            }else{
+                localStorage.setItem("expiresLogin", createExpires());
+            }
 
             document.location.href = 'dashboard.html'
         }else if(emailValid === true && passwordValid === false){
