@@ -17,15 +17,15 @@
                 Shop Build
             </a>
         </div>
-        <div class="profile">
+        <div class="profile noselect" onclick="toogleDropdown()">
             <img src="assets/profile.png" class="profile-image" alt="">
             <b id="profileName">Admin</b>
             <img src="assets/down-arrow.svg" class="profile-arrow" alt="">
         </div>
-        <div class="dropdown">
+        <span class="dropdown hidden noselect" id="dropdownAfterLogin">
             <a href="">Edit Profile</a>
             <a onclick="logOut()">Log Out</a>
-        </div>
+        </span>
     </nav>
 
 
@@ -33,6 +33,7 @@
 
     <script>page='dashboard';login='after';</script>
 
+    <script src="js/navbar.js"></script>
     <script src="js/source.js"></script>
     <script src="js/checkLogin.js"></script>
     <script>checkLogin()</script>

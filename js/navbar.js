@@ -10,3 +10,13 @@ function navbarResponsiveClick(){
         ResNav.classList.add('navbar-responsive-open');
     }
 }
+
+const dropdownAL = document.getElementById('dropdownAfterLogin');
+
+function toogleDropdown(){
+    if(dropdownAL.classList.contains('hidden')){
+        dropdownAL.classList.remove('hidden');
+    }else{
+        dropdownAL.classList.add('hidden');
+    }
+}
