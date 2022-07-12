@@ -1,0 +1,122 @@
+main{
+    position: absolute;
+    top: 60px;
+    left: 200px;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 70px 1fr;
+}
+
+header{
+    padding: 15px;
+    border-bottom: #023E73 solid 2px;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+header h1{
+    font-size: 35px;
+    font-weight: 600;
+    color: #023E73;
+}
+
+.container-card{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    margin: 10px;
+}
+
+.card{
+    color: #023E73;
+    display: grid;
+    padding: 10px;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.top-card{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.top-card h1{
+    font-size: 50px;
+    font-weight: 600;
+    text-align: end;
+}
+
+.top-card h4{
+    font-weight: 600;
+    text-align: end;
+}
+
+
+.top-card img{
+    width: 100px;
+}
+
+.top-card div{
+    display: grid;
+}
+
+.bottom-card{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    color: #023E73;
+}
+
+.card1{
+    background-color: #3B8DBF;
+}
+.card2{
+    background-color: #00BFB2;
+}
+.card3{
+    background-color: #F0F000;
+}
+.card4{
+    background-color: #FC9390;
+}
+
+
+.container-info-user{
+    margin-top: 20px;
+}
+
+.table-left, .table-right{
+    display: grid;
+}
+
+.container-info-user .container-table{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    color: #023E73;
+    font-size: 17px;
+}
+
+.container-table table{
+    border-collapse: collapse;
+    
+}
+
+.container-table tr{
+    border-top: #023E73 1px solid;
+}
+
+.container-table td{
+    padding: 10px;
+
+}
+
+.container-table .bold-table{
+    font-weight: 600;
+}

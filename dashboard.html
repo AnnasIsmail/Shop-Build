@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/logo-shop-build.png">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/leftBar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/navbarAfterLogin.css">
 </head>
 <body>
@@ -28,14 +30,189 @@
         </span>
     </nav>
 
+    <div class="leftBar">
+        <a class="active-page" href="dashboard.html"> <img src="assets/dashboard.svg" alt=""> Dashboard</a>
+        <a href="listProduct.html"> <img src="assets/darfat-product.svg" alt=""> List Product</a>
+        <a href="productSold.html"> <img src="assets/Product-Sold.svg" alt=""> Product Sold</a>
+        <a href="listUser.html"> <img src="assets/list-user.svg" alt=""> List User</a>
+        <a href="editProfile.html"> <img src="assets/Profile.svg" alt=""> Edit Profile</a>
+        <a> <img src="assets/Sign_out.svg" alt=""> Log Out</a>
+    </div>
+
+    <main>
+        <header><h1>Dashboard</h1></header>
+        <div class="container-dashboard">
+            <div class="container-card">
+
+                <div class="card card1">
+                    <div class="top-card">
+                        <img src="assets/darfat-product.svg" alt="">
+                        <div>
+                            <h1 id="jumlahProduct">0</h1>
+                            <h4>Jumlah Produk</h4>
+                        </div>
+                    </div>
+                    <a href="listProduct.html" class="bottom-card">
+                        <p>Tampilkan Semua</p>
+                        <img src="assets/Next.svg" alt="">
+                    </a>
+                </div>
+
+                <div class="card card2">
+                    <div class="top-card">
+                        <img src="assets/Case.svg" alt="">
+                        <div>
+                            <h1 id="totalStock">0</h1>
+                            <h4>Total Stock</h4>
+                        </div>
+                    </div>
+                    <a href="listProduct.html" class="bottom-card">
+                        <p>Tampilkan Semua</p>
+                        <img src="assets/Next.svg" alt="">
+                    </a>
+                </div>
+
+                <div class="card card3">
+                    <div class="top-card">
+                        <img src="assets/Product-Sold.svg" alt="">
+                        <div>
+                            <h1 id="produkTerjual">0</h1>
+                            <h4>Produk Terjual</h4>
+                        </div>
+                    </div>
+                    <a href="productSold.html" class="bottom-card">
+                        <p>Tampilkan Semua</p>
+                        <img src="assets/Next.svg" alt="">
+                    </a>
+                </div>
+
+                <div class="card card4">
+                    <div class="top-card">
+                        <img src="assets/list-user.svg" alt="">
+                        <div>
+                            <h1 id="daftarPengguna">0</h1>
+                            <h4>Daftar Pengguna</h4>
+                        </div>
+                    </div>
+                    <a href="listUser.html" class="bottom-card">
+                        <p>Tampilkan Semua</p>
+                        <img src="assets/Next.svg" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="container-info-user">
+                <header><h1>Info User</h1></header>
+                <div class="container-table">
+                    <div class="table-left">
+                        <table>
+                            <tr>
+                                <td class="bold-table">Nama Lengkap</td>
+                                <td>:</td>
+                                <td id="namaLengkap"></td>
+                            </tr>
+                            <tr>
+                                <td class="bold-table">Username</td>
+                                <td>:</td>
+                                <td id="namaDepan"></td>
+                            </tr>
+                            <tr>
+                                <td class="bold-table">Email</td>
+                                <td>:</td>
+                                <td id="email"></td>
+                            </tr>
+                            <tr>
+                                <td class="bold-table">No. HP</td>
+                                <td>:</td>
+                                <td id="phoneNumber"></td>
+                            </tr>
+                            <tr>
+                                <td class="bold-table">Alamat</td>
+                                <td>:</td>
+                                <td id="alamat"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="table-right">
+                        <table>
+                            <tr>
+                                <td class="bold-table">Last Login</td>
+                                <td>:</td>
+                                <td id="lastLogin"></td>
+                            </tr>
+                            <tr>
+                                <td class="bold-table">IP Address</td>
+                                <td>:</td>
+                                <td id="showIp">admin</td>
+                            </tr>
+                            <tr>
+                                <td class="bold-table">Server</td>
+                                <td>:</td>
+                                <td id="showServer"></td>
+                            </tr>
+                            <tr>
+                                <td class="bold-table">Browser</td>
+                                <td>:</td>
+                                <td id="showBrowser"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
 
+    <script>
+        page='dashboard';
+        login='after';
 
-    <script>page='dashboard';login='after';</script>
+    </script>
 
     <script src="js/navbar.js"></script>
     <script src="js/source.js"></script>
     <script src="js/checkLogin.js"></script>
     <script>checkLogin()</script>
+
+    <script>
+        jumlahStock = 0;
+        jumlahTerjual = 0;
+
+        product.forEach(element => {
+            jumlahStock += element.stock
+        });
+
+        productSold.forEach(data =>{
+            jumlahTerjual += data.qty
+        })
+
+        document.getElementById('jumlahProduct').innerHTML = product.length;
+        document.getElementById('totalStock').innerHTML = jumlahStock;
+        document.getElementById('produkTerjual').innerHTML = jumlahTerjual;
+        document.getElementById('daftarPengguna').innerHTML = user.length;
+
+        dataUser = {};
+
+        user.forEach(data => {
+            if(data.id === parseInt(localStorage.idUser)){
+                dataUser = data;
+            }
+        });
+
+        document.getElementById('namaLengkap').innerHTML = dataUser.name;
+        space = dataUser.name.indexOf(' ');
+        document.getElementById('namaDepan').innerHTML = dataUser.name.substring(0 , space);
+        document.getElementById('email').innerHTML = dataUser.email;
+        document.getElementById('phoneNumber').innerHTML = dataUser.phoneNumber;
+        document.getElementById('alamat').innerHTML = dataUser.address;
+        document.getElementById('lastLogin').innerHTML = dataUser.lastLogin;
+
+
+        fetch('https://api.ipify.org?format=json').then(result=>result.json()).then(res =>{
+            document.getElementById('showIp').innerHTML =  res.ip
+        })
+        document.getElementById('showServer').innerHTML =  window.location.hostname;
+        document.getElementById('showBrowser').innerHTML =  navigator.userAgent;
+
+    </script>
 </body>
 </html>
