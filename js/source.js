@@ -25,8 +25,8 @@ product = [
         price: 69000,
         stock: 250,
         photo: 'assets/semen-gresik.jpg',
-        createdBy: '1',
-        createdDate: '22-12-2021'
+        createdBy: 1,
+        createdDate: 'December 22, 2021'
     },
     {
         id: 2,
@@ -34,8 +34,8 @@ product = [
         price: 31900,
         stock: 15,
         photo: 'assets/pilox.jpg',
-        createdBy: '1',
-        createdDate: '23-12-2021'
+        createdBy: 1,
+        createdDate: 'July 23, 2021'
     },
     {
         id: 3,
@@ -43,8 +43,8 @@ product = [
         price: 7000,
         stock: 100,
         photo: 'assets/refill-kuas.jpg',
-        createdBy: '1',
-        createdDate: '24-12-2021'
+        createdBy: 1,
+        createdDate: 'January 24, 2021'
     },
     {
         id: 4,
@@ -52,8 +52,8 @@ product = [
         price: 15000,
         stock: 80,
         photo: 'assets/tang-massa.jpg',
-        createdBy: '1',
-        createdDate: '25-12-2021'
+        createdBy: 1,
+        createdDate: 'December 25, 2021'
     },
     {
         id: 5,
@@ -61,8 +61,8 @@ product = [
         price: 32000,
         stock: 120,
         photo: 'assets/sekrup.jpg',
-        createdBy: '1',
-        createdDate: '26-12-2021'
+        createdBy: 1,
+        createdDate: 'December 26, 2021'
     },
     {
         id: 6,
@@ -70,8 +70,8 @@ product = [
         price: 45000,
         stock: 68,
         photo: 'assets/waterpass.jpg',
-        createdBy: '1',
-        createdDate: '27-12-2021'
+        createdBy: 1,
+        createdDate: 'March 27, 2021'
     },
     {
         id: 7,
@@ -79,8 +79,8 @@ product = [
         price: 18000,
         stock: 29,
         photo: 'assets/gunting.jpg',
-        createdBy: '1',
-        createdDate: '12-12-2021'
+        createdBy: 1,
+        createdDate: 'December 28, 2011'
     },
     {
         id: 8,
@@ -88,8 +88,8 @@ product = [
         price: 1670000,
         stock: 40,
         photo: 'assets/makita.jpg',
-        createdBy: '1',
-        createdDate: '27-12-2021'
+        createdBy: 1,
+        createdDate: 'December 29, 2021'
     },
     {
         id: 9,
@@ -97,8 +97,8 @@ product = [
         price: 55000,
         stock: 200,
         photo: 'assets/matabor.jpg',
-        createdBy: '1',
-        createdDate: '29-12-2021'
+        createdBy: 2,
+        createdDate: 'December 30, 2020'
     },
     {
         id: 10,
@@ -106,8 +106,8 @@ product = [
         price: 115000,
         stock: 90,
         photo: 'assets/cattembok.jpg',
-        createdBy: '1',
-        createdDate: '30-12-2021'
+        createdBy: 1,
+        createdDate: 'December 22, 2021'
     },
 ]
 

@@ -21,7 +21,7 @@
         </div>
         <div class="profile noselect" onclick="toogleDropdown()">
             <img src="assets/profile.png" class="profile-image" alt="">
-            <b id="profileName">Admin</b>
+            <b id="profileName"></b>
             <img src="assets/down-arrow.svg" class="profile-arrow" alt="">
         </div>
         <span class="dropdown hidden noselect" id="dropdownAfterLogin">
@@ -34,7 +34,6 @@
         <a class="active-page" href="dashboard.html"> <img src="assets/dashboard.svg" alt=""> Dashboard</a>
         <a href="listProduct.html"> <img src="assets/darfat-product.svg" alt=""> List Product</a>
         <a href="productSold.html"> <img src="assets/Product-Sold.svg" alt=""> Product Sold</a>
-        <a href="listUser.html"> <img src="assets/list-user.svg" alt=""> List User</a>
         <a href="editProfile.html"> <img src="assets/Profile.svg" alt=""> Edit Profile</a>
         <a> <img src="assets/Sign_out.svg" alt=""> Log Out</a>
     </div>
@@ -88,13 +87,13 @@
 
                 <div class="card card4">
                     <div class="top-card">
-                        <img src="assets/list-user.svg" alt="">
+                        <img src="assets/Wallet.svg" alt="">
                         <div>
-                            <h1 id="daftarPengguna">0</h1>
-                            <h4>Daftar Pengguna</h4>
+                            <h1 id="jumlahKeuntungan">0</h1>
+                            <h4>Jumlah Keuntungan</h4>
                         </div>
                     </div>
-                    <a href="listUser.html" class="bottom-card">
+                    <a href="productSold.html" class="bottom-card">
                         <p>Tampilkan Semua</p>
                         <img src="assets/Next.svg" alt="">
                     </a>
@@ -142,7 +141,7 @@
                             <tr>
                                 <td class="bold-table">IP Address</td>
                                 <td>:</td>
-                                <td id="showIp">admin</td>
+                                <td id="showIp">0.0.0.0</td>
                             </tr>
                             <tr>
                                 <td class="bold-table">Server</td>
@@ -188,7 +187,18 @@
         document.getElementById('jumlahProduct').innerHTML = product.length;
         document.getElementById('totalStock').innerHTML = jumlahStock;
         document.getElementById('produkTerjual').innerHTML = jumlahTerjual;
-        document.getElementById('daftarPengguna').innerHTML = user.length;
+
+        jumlahKeuntungan = 0;
+
+        productSold.forEach(data=>{
+            product.forEach(dataProduct=>{
+                if(data.idProduct === dataProduct.id){
+                    jumlahKeuntungan += dataProduct.price * data.qty;
+                }
+            });
+        });
+
+        document.getElementById('jumlahKeuntungan').innerHTML = jumlahKeuntungan;
 
         dataUser = {};
 
@@ -201,6 +211,7 @@
         document.getElementById('namaLengkap').innerHTML = dataUser.name;
         space = dataUser.name.indexOf(' ');
         document.getElementById('namaDepan').innerHTML = dataUser.name.substring(0 , space);
+        document.getElementById('profileName').innerHTML = dataUser.name.substring(0 , space);
         document.getElementById('email').innerHTML = dataUser.email;
         document.getElementById('phoneNumber').innerHTML = dataUser.phoneNumber;
         document.getElementById('alamat').innerHTML = dataUser.address;
