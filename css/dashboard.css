@@ -172,6 +172,16 @@ th{
     margin-bottom: 10px;
 }
 
+.container-search button:hover{
+    background: #023E73;
+    color: white;
+    cursor: pointer;
+}
+
 .pl{
     padding-left: 5px;
+}
+
+.cursor{
+    cursor: pointer;
 }
