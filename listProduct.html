@@ -35,14 +35,14 @@
         <a class="active-page" href="listProduct.html"> <img src="assets/darfat-product.svg" alt=""> List Product</a>
         <a href="productSold.html"> <img src="assets/Product-Sold.svg" alt=""> Product Sold</a>
         <a href="editProfile.html"> <img src="assets/Profile.svg" alt=""> Edit Profile</a>
-        <a> <img src="assets/Sign_out.svg" alt=""> Log Out</a>
+        <a href="" onclick="logOut()"> <img src="assets/Sign_out.svg" alt=""> Log Out</a>
     </div>
 
-    <main>
-        <header><h1>List Product</h1></header>
+    <main class="list-product">
+        <header><h1>List Product</h1><button onclick="goToAddNewData()">Add New Product</button></header>
         <div class="container-list-product">
             <div class="container-search">
-                <input type="text" placeholder="Search By Name" id="searchWord" onchange="searchData()">
+                <input type="text" placeholder="Search" id="searchWord" onchange="searchData()">
                 <button>Search</button>
             </div>
             <table id="table">
@@ -133,7 +133,7 @@
                 tr.appendChild(tdDate);
     
                 const tdAction = document.createElement('td');
-                tdAction.innerHTML = '<img onclick="goToDetail()" src="assets/Eye.svg" class="cursor" alt=""><img src="assets/Edit.svg" class="pl cursor" alt=""><img src="assets/Delete.svg" class="cursor" alt="">'
+                tdAction.innerHTML = `<img onclick="goToDetail(${data.id})" src="assets/Eye.svg" class="cursor" alt=""><img src="assets/Edit.svg" onclick="goToEdit(${data.id})" class="pl cursor" alt=""><img src="assets/Delete.svg" class="cursor" onclick="goToRemove(${data.id})" alt="">`
                 tr.appendChild(tdAction);
                 
                 document.getElementById('table').appendChild(tr);
@@ -218,7 +218,17 @@
             dataRes = [];
 
             product.forEach(data => {
-                if(data.name.toLowerCase().includes(word.toLowerCase())){
+
+                name = '';
+                user.forEach(dataUser =>{
+                    if(data.createdBy === dataUser.id){
+                        name = dataUser.name
+                    }
+                })
+
+                value = `${data.name}${data.price}${data.stock}${name}${data.createdDate}`
+
+                if(value.toLowerCase().search(word.toLowerCase()) > -1){
                     dataRes.push(data);
                 }
             });
@@ -226,8 +236,33 @@
             tampilData(dataRes);
         }
 
-        function goToDetail(){
+        function goToDetail(id){
+            localStorage.setItem('detailProductId', id);
             document.location.href = 'detailProduct.html'
+        }
+
+        function goToEdit(id){
+            localStorage.setItem('detailProductId', id);
+            document.location.href = 'editProduct.html'
+        }
+
+        function goToRemove(id){
+            dataArray = [];
+            product.forEach(data =>{
+                if(parseInt(data.id) === parseInt(id)){
+
+                }else{
+                    dataArray.push(data);
+                }
+            })
+
+            localStorage.setItem('product', JSON.stringify(dataArray));
+            product = dataArray;
+            location.reload();
+        }
+
+        function goToAddNewData(){
+            document.location.href = 'addNewDataProduct.html'
         }
 
     </script>

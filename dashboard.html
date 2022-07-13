@@ -35,7 +35,7 @@
         <a href="listProduct.html"> <img src="assets/darfat-product.svg" alt=""> List Product</a>
         <a href="productSold.html"> <img src="assets/Product-Sold.svg" alt=""> Product Sold</a>
         <a href="editProfile.html"> <img src="assets/Profile.svg" alt=""> Edit Profile</a>
-        <a> <img src="assets/Sign_out.svg" alt=""> Log Out</a>
+        <a href="" onclick="logOut()"> <img src="assets/Sign_out.svg" alt=""> Log Out</a>
     </div>
 
     <main>
@@ -177,7 +177,7 @@
         jumlahTerjual = 0;
 
         product.forEach(element => {
-            jumlahStock += element.stock
+            jumlahStock += parseInt(element.stock)
         });
 
         productSold.forEach(data =>{

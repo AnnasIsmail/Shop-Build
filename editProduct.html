@@ -41,21 +41,26 @@
 
     <main>
         <header><img onclick="goToListProduct()" src="assets/backDetail.svg" alt=""><h1>Detail Product</h1></header>
-        <div class="container-detail-product">
-            <img id="srcImage" alt="" class="oneCol">
+        <form class="container-detail-product" action="listProduct.html" >
+            <label for="">Photo</label>
+            <input type="file" value="Masjoko.png" name="" id="urlImage">
            <label for="">ID :</label>
            <input type="number" id="id" readonly>
            <label for="">Name :</label>
-           <input type="text" id="name" readonly>
+           <input type="text" id="name">
            <label for="">Price :</label>
-           <input type="number" id="price" readonly>
+           <input type="number" id="price">
            <label for="">stock :</label>
-           <input type="number" id="stock" readonly>
+           <input type="number" id="stock">
            <label for="">Created By :</label>
            <input type="text" id="createdBy" readonly>
            <label for="">Created Date :</label>
            <input type="text" id="createdDate" readonly>
-        </div>
+           <div class="container-button">
+                <button onclick="goToListProduct()">Cancel</button>
+                <button type="submit" id="submitButton" onclick="submitEdit()">Submit</button>
+           </div>
+        </form>
     </main>
 
 
@@ -91,7 +96,6 @@
             }
         });
 
-        document.getElementById('srcImage').src = dataProduct.photo;
         document.getElementById('id').value = idProduct;
         document.getElementById('name').value = dataProduct.name;
         document.getElementById('price').value = dataProduct.price;
@@ -102,6 +106,40 @@
         function goToListProduct(){
             document.location.href = 'listProduct.html'
         }        
+
+        function submitEdit(){
+            
+            src = dataProduct.photo
+
+            if(document.getElementById('urlImage').value !== ""){
+                lastIndex = document.getElementById('urlImage').value.lastIndexOf("\\");
+                src = "assets/foto new product/" + document.getElementById('urlImage').value.substring(lastIndex+1);
+            }
+
+            dataAfterEdit = {
+                id: parseInt(localStorage.getItem("detailProductId")),
+                name: document.getElementById('name').value,
+                price: document.getElementById('price').value,
+                stock: document.getElementById('stock').value,
+                photo: src,
+                createdBy: parseInt(document.getElementById('createdBy').value),
+                createdDate: document.getElementById('createdDate').value
+            };
+            
+            productEdit = [];
+
+            product.forEach(data => {
+                if(data.id === parseInt(localStorage.getItem("detailProductId"))){
+                    productEdit.push(dataAfterEdit);
+                }else{
+                    productEdit.push(data);
+                }
+            });
+
+            localStorage.setItem('product', JSON.stringify(productEdit));
+            product = productEdit
+            goToListProduct();
+        }
 
     </script>
 </body>
