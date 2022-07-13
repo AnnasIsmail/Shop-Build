@@ -61,7 +61,7 @@
            <input type="number" id="qty">
 
            <label for="">Total Transaction :</label>
-           <input type="text" id="createdBy" readonly>
+           <input type="number" id="totalTransaction" readonly>
 
            <label for="">Date :</label>
            <input type="text" id="date" readonly>
@@ -108,28 +108,23 @@
 
         dataProduct = {};
 
-        // product.forEach((data , index) => {
-        //     document.getElementById('products').innerHTML = `
-        //         <option value="${data.name}">${data.name}</option>
-        //     `;
+        product.forEach((data , index) => {
             
-        //     if(data.id === parseInt(idProductSold)){
-        //         dataProduct = data
-        //     }
-        // });
+            let select = document.createElement('option');
+            select.setAttribute('value', data.name);
+            select.innerHTML = data.name;
+            document.getElementById('products').appendChild(select);
 
-        document.getElementById('products').innerHTML = `
-            ${product.forEach(data=>{
-                    `<option value="${data.name}">${data.name}</option>`
-                })}
-            `;
-
+            if(data.id === parseInt(idProductSold)){
+                document.getElementById('products').options[index].selected = true;
+                dataProduct = data
+            }
+        });
         document.getElementById('id').value = idProductSold;
         document.getElementById('name').value = dataProductSold.customerName
-        document.getElementById('price').value = dataProduct.price;
-        document.getElementById('stock').value = dataProduct.stock;
-        document.getElementById('createdBy').value = dataProduct.createdBy;
-        document.getElementById('createdDate').value = dataProduct.createdDate;
+        document.getElementById('qty').value = dataProductSold.qty;
+        document.getElementById('totalTransaction').value = dataProduct.price*dataProductSold.qty;
+        document.getElementById('date').value = dataProductSold.date ;
         
         function goToListProduct(){
             document.location.href = 'listProduct.html'
