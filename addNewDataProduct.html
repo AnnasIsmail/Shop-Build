@@ -41,7 +41,7 @@
 
     <main>
         <header><h1>Add New Data Product</h1></header>
-        <form class="container-detail-product" action="listProduct.html">
+        <form class="container-detail-product" onsubmit="return false">
             <p class="error-massage hidden oneCol" id="errorSubmit"></p>
             <label for="">Name :</label>
             <input type="text" id="name" onfocus="focuss()">
@@ -137,6 +137,7 @@
     
                 localStorage.setItem('product', JSON.stringify(productEdit));
                 product = productEdit
+                goToListProduct();
             }
         }
 

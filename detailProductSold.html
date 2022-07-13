@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Shop Build</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/logo-shop-build.png">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/leftBar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/navbarAfterLogin.css">
+    <link rel="stylesheet" href="css/detailProduct.css">
+</head>
+<body>
+   
+    <nav class="navbar navbar-after-login">
+        <div >
+            <a href="index.html" class="logo-navbar">
+                <img src="assets/logo-shop-build.png" alt="">
+                Shop Build
+            </a>
+        </div>
+        <div class="profile noselect" onclick="toogleDropdown()">
+            <img src="assets/profile.png" class="profile-image" alt="">
+            <b id="profileName"></b>
+            <img src="assets/down-arrow.svg" class="profile-arrow" alt="">
+        </div>
+        <span class="dropdown hidden noselect" id="dropdownAfterLogin">
+            <a href="">Edit Profile</a>
+            <a onclick="logOut()">Log Out</a>
+        </span>
+    </nav>
+
+    <div class="leftBar">
+        <a href="dashboard.html"> <img src="assets/dashboard.svg" alt=""> Dashboard</a>
+        <a href="listProduct.html"> <img src="assets/darfat-product.svg" alt=""> List Product</a>
+        <a href="productSold.html"> <img src="assets/Product-Sold.svg" alt=""> Product Sold</a>
+        <a href="editProfile.html"> <img src="assets/Profile.svg" alt=""> Edit Profile</a>
+        <a href="" onclick="logOut()"> <img src="assets/Sign_out.svg" alt=""> Log Out</a>
+    </div>
+
+    <main>
+        <header><img onclick="goToListProduct()" src="assets/backDetail.svg" alt=""><h1>Detail Product Sold</h1></header>
+        <div class="container-detail-product">
+            <img id="srcImage" alt="" class="oneCol">
+
+           <label for="">ID :</label>
+           <input type="number" id="id" readonly>
+
+           <label for="">Customer Name :</label>
+           <input type="text" id="customerName" readonly>
+
+           <label for="">Product Name :</label>
+           <input type="text" id="productName" readonly>
+
+           <label for="">Price :</label>
+           <input type="number" id="price" readonly>
+
+           <label for="">Qty :</label>
+           <input type="number" id="qty" readonly>
+
+           <label for="">Total Transaction :</label>
+           <input type="text" id="totalTransaction" readonly>
+
+           <label for="">Date :</label>
+           <input type="text" id="date" readonly>
+        </div>
+    </main>
+
+
+    <script>
+        page='detailProduct';
+        login='after';
+
+    </script>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/source.js"></script>
+    <script src="js/checkLogin.js"></script>
+    <script>checkLogin()</script>
+
+    <script>
+        dataUser = {};
+
+        user.forEach(data => {
+            if(data.id === parseInt(localStorage.idUser)){
+                dataUser = data;
+            }
+        });
+        space = dataUser.name.indexOf(' ');
+        document.getElementById('profileName').innerHTML = dataUser.name.substring(0 , space);
+
+        idProductSold = localStorage.getItem('detailProductSoldId');
+
+        dataProductSold = {};
+
+        productSold.forEach(data => {
+            if(parseInt(data.id) === parseInt(idProductSold)){
+                dataProductSold = data
+            }
+        });
+
+        dataProduct = {};
+
+        product.forEach(data => {
+            if(parseInt(data.id) === parseInt(dataProductSold.id)){
+                dataProduct = data
+            }
+        });
+
+        totalTransaction = dataProduct.price*dataProductSold.qty;
+
+        document.getElementById('srcImage').src = dataProduct.photo;
+        document.getElementById('id').value = idProductSold;
+        document.getElementById('customerName').value = dataProductSold.customerName;
+        document.getElementById('productName').value = dataProduct.name;
+        document.getElementById('price').value = dataProduct.price;
+        document.getElementById('qty').value = dataProductSold.qty;
+        document.getElementById('totalTransaction').value = totalTransaction;
+        document.getElementById('date').value = dataProductSold.date;
+        
+        function goToListProduct(){
+            document.location.href = 'productSold.html'
+        }        
+
+    </script>
+</body>
+</html>

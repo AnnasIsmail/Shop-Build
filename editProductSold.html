@@ -41,22 +41,31 @@
 
     <main>
         <header><img onclick="goToListProduct()" src="assets/backDetail.svg" alt=""><h1>Detail Product</h1></header>
-        <form class="container-detail-product" onsubmit="return false">
-            <p class="error-massage hidden oneCol" id="errorSubmit"></p>
+        <form class="container-detail-product" action="listProduct.html" >
+
             <label for="">Photo</label>
-            <input type="file" value="Masjoko.png" name="" id="urlImage" onfocus="focuss()">
+            <input type="file" value="Masjoko.png" name="" id="urlImage">
+
            <label for="">ID :</label>
            <input type="number" id="id" readonly>
-           <label for="">Name :</label>
-           <input type="text" id="name" onfocus="focuss()">
-           <label for="">Price :</label>
-           <input type="number" id="price" onfocus="focuss()">
-           <label for="">stock :</label>
-           <input type="number" id="stock" onfocus="focuss()">
-           <label for="">Created By :</label>
+
+           <label for="">Name Customer :</label>
+           <input type="text" id="name">
+
+           <label for="">Product :</label>
+           <select name="products" id="products">
+
+          </select>
+
+           <label for="">Qty :</label>
+           <input type="number" id="qty">
+
+           <label for="">Total Transaction :</label>
            <input type="text" id="createdBy" readonly>
-           <label for="">Created Date :</label>
-           <input type="text" id="createdDate" readonly>
+
+           <label for="">Date :</label>
+           <input type="text" id="date" readonly>
+
            <div class="container-button">
                 <button onclick="goToListProduct()">Cancel</button>
                 <button type="submit" id="submitButton" onclick="submitEdit()">Submit</button>
@@ -87,78 +96,77 @@
         space = dataUser.name.indexOf(' ');
         document.getElementById('profileName').innerHTML = dataUser.name.substring(0 , space);
 
-        idProduct = localStorage.getItem('detailProductId');
+        idProductSold = localStorage.getItem('detailProductSoldId');
 
-        dataProduct = {};
+        dataProductSold = {};
 
-        product.forEach(data => {
-            if(data.id === parseInt(idProduct)){
-                dataProduct = data
+        productSold.forEach((data , index) => {
+            if(parseInt(data.id) === parseInt(idProductSold)){
+                dataProductSold = data
             }
         });
 
-        document.getElementById('id').value = idProduct;
-        document.getElementById('name').value = dataProduct.name;
+        dataProduct = {};
+
+        // product.forEach((data , index) => {
+        //     document.getElementById('products').innerHTML = `
+        //         <option value="${data.name}">${data.name}</option>
+        //     `;
+            
+        //     if(data.id === parseInt(idProductSold)){
+        //         dataProduct = data
+        //     }
+        // });
+
+        document.getElementById('products').innerHTML = `
+            ${product.forEach(data=>{
+                    `<option value="${data.name}">${data.name}</option>`
+                })}
+            `;
+
+        document.getElementById('id').value = idProductSold;
+        document.getElementById('name').value = dataProductSold.customerName
         document.getElementById('price').value = dataProduct.price;
         document.getElementById('stock').value = dataProduct.stock;
         document.getElementById('createdBy').value = dataProduct.createdBy;
         document.getElementById('createdDate').value = dataProduct.createdDate;
         
         function goToListProduct(){
-            document.location.href = 'listProduct.html';
+            document.location.href = 'listProduct.html'
         }        
-
-        function validation(){
-            if(document.getElementById('name').value === "" || document.getElementById('price').value === "" || document.getElementById('stock').value === "" ){
-                document.getElementById('errorSubmit').classList.remove('hidden');
-                document.getElementById('errorSubmit').innerHTML = 'Pastikan Seluruh Field sudah terisi!';
-                return false;
-            }else{
-                return true;
-            }
-        }
-
-        function focuss(){
-            document.getElementById('errorSubmit').classList.add('hidden');
-        }
-
 
         function submitEdit(){
             
-            valid = validation();
+            src = dataProduct.photo
 
-            if(valid === true){
-                src = dataProduct.photo
-    
-                if(document.getElementById('urlImage').value !== ""){
-                    lastIndex = document.getElementById('urlImage').value.lastIndexOf("\\");
-                    src = "assets/foto new product/" + document.getElementById('urlImage').value.substring(lastIndex+1);
-                }
-    
-                dataAfterEdit = {
-                    id: parseInt(localStorage.getItem("detailProductId")),
-                    name: document.getElementById('name').value,
-                    price: document.getElementById('price').value,
-                    stock: document.getElementById('stock').value,
-                    photo: src,
-                    createdBy: parseInt(document.getElementById('createdBy').value),
-                    createdDate: document.getElementById('createdDate').value
-                };
-                
-                productEdit = [];
-    
-                product.forEach(data => {
-                    if(data.id === parseInt(localStorage.getItem("detailProductId"))){
-                        productEdit.push(dataAfterEdit);
-                    }else{
-                        productEdit.push(data);
-                    }
-                });
-    
-                localStorage.setItem('product', JSON.stringify(productEdit));
-                product = productEdit
-                goToListProduct();
+            if(document.getElementById('urlImage').value !== ""){
+                lastIndex = document.getElementById('urlImage').value.lastIndexOf("\\");
+                src = "assets/foto new product/" + document.getElementById('urlImage').value.substring(lastIndex+1);
             }
+
+            dataAfterEdit = {
+                id: parseInt(localStorage.getItem("detailProductId")),
+                name: document.getElementById('name').value,
+                price: document.getElementById('price').value,
+                stock: document.getElementById('stock').value,
+                photo: src,
+                createdBy: parseInt(document.getElementById('createdBy').value),
+                createdDate: document.getElementById('createdDate').value
+            };
+            
+            productEdit = [];
+
+            product.forEach(data => {
+                if(data.id === parseInt(localStorage.getItem("detailProductId"))){
+                    productEdit.push(dataAfterEdit);
+                }else{
+                    productEdit.push(data);
+                }
+            });
+
+            localStorage.setItem('product', JSON.stringify(productEdit));
+            product = productEdit
+            goToListProduct();
         }
 
     </script>

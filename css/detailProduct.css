@@ -24,7 +24,7 @@
     font-weight: 600;
 }
 
-.container-detail-product input{
+.container-detail-product input, .container-detail-product select{
     background: rgba( 255, 255, 255, 0.8 );
     box-shadow: 0 2px 10px 0 rgba( 31, 38, 135, 0.27 );
     backdrop-filter: blur( 11.5px );
@@ -38,6 +38,10 @@
     padding: 10px; 
     margin: 5px 0;
     color: #023E73;
+}
+
+.container-detail-product select{
+    height: auto;
 }
 
 .container-detail-product label{

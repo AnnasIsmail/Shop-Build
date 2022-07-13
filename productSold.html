@@ -38,8 +38,8 @@
         <a href="" onclick="logOut()"> <img src="assets/Sign_out.svg" alt=""> Log Out</a>
     </div>
 
-    <main>
-        <header><h1>List Product</h1></header>
+    <main class="list-product">
+        <header><h1>List Product</h1><button onclick="goToAddNewData()">Add New Data</button></header>
         <div class="container-list-product">
             <div class="container-search">
                 <input type="text" placeholder="Search" id="searchWord" onchange="searchData()">
@@ -166,18 +166,18 @@
         }
 
         function sortByNP(){
-            product.sort((a, b) => {
+            productSold.sort((a, b) => {
 
             nameA = '';
-            user.forEach(dataUser =>{
-                if(a.createdBy === dataUser.id){
+            product.forEach(dataUser =>{
+                if(a.idProduct === dataUser.id){
                     nameA = dataUser.name
                 }
             })
 
             nameB = '';
-            user.forEach(dataUser =>{
-                if(b.createdBy === dataUser.id){
+            product.forEach(dataUser =>{
+                if(b.idProduct === dataUser.id){
                     nameB = dataUser.name
                 }
             })
@@ -196,44 +196,20 @@
             tampilData(productSold);
         }
 
-        function sortByCB(){
-            product.sort((a, b) => {
-
-                nameA = '';
-                user.forEach(dataUser =>{
-                    if(a.createdBy === dataUser.id){
-                        nameA = dataUser.name
-                    }
-                })
-
-                nameB = '';
-                user.forEach(dataUser =>{
-                    if(b.createdBy === dataUser.id){
-                        nameB = dataUser.name
-                    }
-                })
-
-                let fa = nameA.toLowerCase(),
-                    fb = nameB.toLowerCase();
-
-                if (fa < fb) {
-                    return -1;
-                }
-                if (fa > fb) {
-                    return 1;
-                }
-                return 0;
+        function sortByQTY(){
+            productSold.sort((a, b) => {
+                return a.qty - b.qty;
             });
-            tampilData(product);
+            tampilData(productSold);
         }
 
         function sortByDate(){
-            product.sort((a, b) => {
-                let da = new Date(a.createdDate),
-                    db = new Date(b.createdDate);
+            productSold.sort((a, b) => {
+                let da = new Date(a.date),
+                    db = new Date(b.date);
                 return da - db;
             });
-            tampilData(product);
+            tampilData(productSold);
         }
 
         function searchData(){
@@ -260,18 +236,20 @@
         }
 
         function goToDetail(id){
-            localStorage.setItem('detailProductId', id);
-            document.location.href = 'detailProduct.html'
+            localStorage.setItem('detailProductSoldId', id);
+            document.location.href = 'detailProductSold.html'
         }
 
         function goToEdit(id){
-            localStorage.setItem('detailProductId', id);
-            document.location.href = 'editProduct.html'
+            localStorage.setItem('detailProductSoldId', id);
+            document.location.href = 'editProductSold.html'
         }
 
         function goToRemove(id){
-            localStorage.setItem('detailProductId', id);
-            document.location.href = 'editProduct.html'
+        }
+
+        function goToAddNewData(){
+            document.location.href = 'addProductSold.html'
         }
 
     </script>
