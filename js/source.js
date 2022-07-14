@@ -124,80 +124,60 @@ productSold = [
         id: 1,
         customerName: 'Joko',
         noHandphone: '081234567',
-        idProduct: 1,
-        qty: 50,
         date: 'December 22, 2021'
     },
     {
         id: 2,
         customerName: 'Santo',
         noHandphone: '081232356568',
-        idProduct: 2,
-        qty: 5,
         date: 'December 22, 2012'
     },
     {
         id: 3,
         customerName: 'Maman',
         noHandphone: '081237846544',
-        idProduct: 7,
-        qty: 10,
         date: 'February 2, 2021'
     },
     {
         id: 4,
         customerName: 'Endang',
         noHandphone: '08454655462',
-        idProduct: 5,
-        qty: 9,
         date: 'December 12, 2008'
     },
     {
         id: 5,
         customerName: 'Sultan',
         noHandphone: '08123743455',
-        idProduct: 4,
-        qty: 37,
         date: 'December 2, 2021'
     },
     {
         id: 6,
         customerName: 'Udin',
         noHandphone: '08732324789933',
-        idProduct: 10,
-        qty: 4,
         date: 'March 22, 2022'
     },
     {
         id: 7,
         customerName: 'Wirman',
         noHandphone: '081275785754',
-        idProduct: 6,
-        qty: 11,
         date: 'December 17, 2021'
     },
     {
         id: 8,
         customerName: 'Sukman',
         noHandphone: '083424451993',
-        idProduct: 9,
-        qty: 13,
         date: 'June 21, 2020'
     },
     {
         id: 9,
         customerName: 'Dudung',
         noHandphone: '0812343445663',
-        idProduct: 3,
-        qty: 20,
         date: 'December 22, 2009'
     },
     {
         id: 10,
         customerName: 'Eman',
         noHandphone: '08134234875',
-        idProduct: 2,
-        qty: 11,
         date: 'January 12, 2021'
     },
 ]
@@ -208,4 +188,130 @@ if(productSoldLocal){
     productSold = JSON.parse(productSoldLocal);
 }else{
     localStorage.setItem('productSold', JSON.stringify(productSold));
+}
+
+detailProductSold = [
+    {
+        idSold: 1,
+        idProduct: 1,
+        qty: 2000
+    },
+    {
+        idSold: 1,
+        idProduct: 2,
+        qty: 10
+    },
+    {
+        idSold: 2,
+        idProduct: 5,
+        qty: 12
+    },
+    {
+        idSold: 2,
+        idProduct: 3,
+        qty:10
+    },
+    {
+        idSold: 3,
+        idProduct: 10,
+        qty: 25
+    },
+    {
+        idSold: 4,
+        idProduct: 10,
+        qty: 19
+    },
+    {
+        idSold: 4,
+        idProduct: 5,
+        qty: 100
+    },
+    {
+        idSold: 4,
+        idProduct: 9,
+        qty: 200
+    },
+    {
+        idSold: 5,
+        idProduct: 5,
+        qty: 10
+    },
+    {
+        idSold: 6,
+        idProduct: 3,
+        qty: 25
+    },
+    {
+        idSold: 6,
+        idProduct: 5,
+        qty: 50
+    },
+    {
+        idSold: 6,
+        idProduct: 9,
+        qty:25
+    },
+    {
+        idSold: 7,
+        idProduct: 8,
+        qty: 90
+    },
+    {
+        idSold: 7,
+        idProduct: 7,
+        qty: 10
+    },
+    {
+        idSold: 8,
+        idProduct: 10,
+        qty: 20
+    },
+    {
+        idSold: 8,
+        idProduct: 8,
+        qty: 15
+    },
+    {
+        idSold: 8,
+        idProduct: 10,
+        qty: 20
+    },
+    {
+        idSold: 9,
+        idProduct: 1,
+        qty: 200
+    },
+    {
+        idSold: 9,
+        idProduct: 2,
+        qty: 25
+    },
+    {
+        idSold: 10,
+        idProduct: 1,
+        qty: 50
+    },
+    {
+        idSold: 10,
+        idProduct: 4,
+        qty: 45
+    },
+    {
+        idSold: 10,
+        idProduct: 8,
+        qty: 25
+    },
+    {
+        idSold: 10,
+        idProduct: 9,
+        qty: 35
+    }
+]
+
+detailProductSoldLocal = localStorage.getItem("detailProductSold");
+
+if(detailProductSoldLocal){
+    detailProductSold = JSON.parse(detailProductSoldLocal);
+}else{
+    localStorage.setItem('detailProductSold', JSON.stringify(detailProductSold));
 }
