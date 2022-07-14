@@ -20,3 +20,14 @@ function toogleDropdown(){
         dropdownAL.classList.add('hidden');
     }
 }
+
+function leftBarFunction(){
+    leftBar = document.getElementsByClassName("leftBar")[0]
+    if(leftBar.classList.contains("leftBarOpen")){
+        leftBar.classList.remove("leftBarOpen");
+        leftBar.classList.add("leftBarClose");
+    }else{
+        leftBar.classList.remove("leftBarClose");
+        leftBar.classList.add("leftBarOpen");
+    }
+}

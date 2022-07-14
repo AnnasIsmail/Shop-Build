@@ -105,7 +105,7 @@ header h1{
 .container-info-user .container-table{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 0 20px ;
     padding: 20px;
     color: #023E73;
     font-size: 17px;
@@ -138,6 +138,7 @@ th{
 }
 
 .bold-table{
+    width: 130px;
     font-weight: 600;
 }
 
@@ -145,6 +146,7 @@ th{
     padding: 10px;
     display: flex;
     flex-direction: column;
+    min-width: 700px;
 }
 
 .container-search{
@@ -196,4 +198,36 @@ button:hover{
 
 .cursor{
     cursor: pointer;
+}
+
+@media only screen and (max-width: 1250px) {
+    .container-card{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 10px;
+    }
+}
+
+
+@media only screen and (max-width: 1000px) {
+    main{
+        left: 00px;
+    }
+
+}
+
+@media only screen and (max-width: 800px) {
+    .container-info-user .container-table{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .container-card{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin: 10px;
+    }
 }

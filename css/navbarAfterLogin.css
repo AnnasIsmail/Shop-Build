@@ -59,3 +59,15 @@
     user-select: none;
     -webkit-touch-callout: none; 
   }
+
+  @media only screen and (max-width: 1000px) {
+    .icon-responsive{
+        display: block !important;
+    }
+
+    .dropdown , .profile{
+        display: none;
+        visibility: hidden;
+    }
+
+}

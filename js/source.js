@@ -7,15 +7,15 @@
         DOB: '2002-12-12',
         password: 'admin',
         phoneNumber: '08123456789',
-        lastLogin: '12-07-2022'     
+        lastLogin: '2022-07-12'     
     }
  ]
 
  userLocal = localStorage.getItem("user");
 if(userLocal){
-    JSON.parse(userLocal).forEach(data => {
-        user.push(data)
-    });
+        user = JSON.parse(userLocal);
+}else{
+    localStorage.setItem('user', JSON.stringify(user));
 }
 
 product = [
