@@ -97,7 +97,7 @@ product = [
         price: 55000,
         stock: 200,
         photo: 'assets/matabor.jpg',
-        createdBy: 2,
+        createdBy: 1,
         createdDate: 'December 30, 2020'
     },
     {
@@ -194,7 +194,7 @@ detailProductSold = [
     {
         idSold: 1,
         idProduct: 1,
-        qty: 2000
+        qty: 200
     },
     {
         idSold: 1,
@@ -224,12 +224,12 @@ detailProductSold = [
     {
         idSold: 4,
         idProduct: 5,
-        qty: 100
+        qty: 50
     },
     {
         idSold: 4,
         idProduct: 9,
-        qty: 200
+        qty: 20
     },
     {
         idSold: 5,
@@ -279,7 +279,7 @@ detailProductSold = [
     {
         idSold: 9,
         idProduct: 1,
-        qty: 200
+        qty: 30
     },
     {
         idSold: 9,

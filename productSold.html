@@ -134,7 +134,7 @@
                         total += price*dataDetail.qty;
                     }
                 })
-                tdBy.innerHTML = total
+                tdBy.innerHTML = FormatMoney(total)
                 tr.appendChild(tdBy);
 
                 const tdDate = document.createElement('td');

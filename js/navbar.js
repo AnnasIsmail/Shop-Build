@@ -31,3 +31,12 @@ function leftBarFunction(){
         leftBar.classList.add("leftBarOpen");
     }
 }
+
+
+function FormatMoney(props){
+    let formatTigaAngka = Intl.NumberFormat("en-US", {
+        maximumSignificantDigits: 20,
+    });
+
+    return 'Rp '+formatTigaAngka.format(props)
+}

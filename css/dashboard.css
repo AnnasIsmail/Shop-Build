@@ -49,17 +49,28 @@ header h1{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
+    max-width: 100%;
+    /* overflow: hidden; */
 }
 
 .top-card h1{
     font-size: 50px;
     font-weight: 600;
     text-align: end;
+    white-space: nowrap;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    max-width: 100%;
 }
 
 .top-card h4{
     font-weight: 600;
     text-align: end;
+    white-space: pre-wrap;
+    word-break: break-all;
 }
 
 

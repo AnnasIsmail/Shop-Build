@@ -1,4 +1,4 @@
-const date = new Date();
+date = new Date();
 
 function createExpires(){
     return date.getTime() + 5000000

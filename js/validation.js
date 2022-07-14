@@ -302,7 +302,35 @@ function submitLogin(){
                 localStorage.setItem("expiresLogin", createExpires());
             }
 
-            document.location.href = 'dashboard.html'
+            dateNow = new Date();
+
+            month = dateNow.getMonth();
+            tanggal = dateNow.getDate();
+            year = dateNow.getFullYear();
+
+            dataToUser = [];
+            
+            user.forEach(data => {
+                if(data.id === id){
+                    if(tanggal.toString().length === 1){
+                        tanggal = `0${tanggal}`
+                    }
+                    
+                    if(month.toString().length === 1){
+                        month = `0${month}`
+                    }
+
+                    data.lastLogin = `${year}-${month}-${tanggal}`
+                    dataToUser.push(data);
+                }else{
+                    dataToUser.push(data);
+                }
+            })
+
+            localStorage.setItem('user', JSON.stringify(dataToUser));
+            user = dataToUser
+
+            // document.location.href = 'dashboard.html'
         }else if(emailValid === true && passwordValid === false){
             document.getElementById('errorSubmit').classList.remove('hidden');
             document.getElementById('errorSubmit').innerHTML = 'Password salah mohon masukan password dengan sesuai.';
