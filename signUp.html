@@ -37,6 +37,7 @@
                 <h2>Create New Account</h2>
                 <p class="error-massage hidden" id="errorSubmit"></p>
                 <p class="error-massage hidden" id="errorName"></p>
+                <p class="error-massage hidden" id="errorUsername"></p>
                 <p class="error-massage hidden" id="errorAddress"></p>
                 <p class="error-massage hidden" id="errorEmail"></p>
                 <p class="error-massage hidden" id="errorDOB"></p>
@@ -44,6 +45,8 @@
                 <p class="error-massage hidden" id="errorPhoneNumber"></p>
                 <label for="name">Name</label>
                 <input type="text" placeholder="Name" id="name" name="name" onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)" onchange="validateLoginChange(this)">
+                <label for="name">Username</label>
+                <input type="text" placeholder="Username" id="username" name="username" onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)" onchange="validateLoginChange(this)">
                 <label for="address">Address</label>
                 <textarea name="address" id="address" placeholder="Address" rows="3" onblur="validationRegisterBlur(this)" onfocus="validationRegisterFocus(this)"></textarea onchange="validateLoginChange(this)">
                 <label for="email">Email</label>

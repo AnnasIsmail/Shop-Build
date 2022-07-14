@@ -29,16 +29,17 @@
             <img src="assets/down-arrow.svg" class="profile-arrow" alt="">
         </div>
         <span class="dropdown hidden noselect" id="dropdownAfterLogin">
-            <a href="">Edit Profile</a>
+            <a href="profile.html">Profile</a>
             <a onclick="logOut()">Log Out</a>
         </span>
     </nav>
 
     <div class="leftBar">
-        <a href="dashboard.html"> <img src="assets/dashboard.svg" alt=""> Dashboard</a>
+        <a class="active-page" href="dashboard.html"> <img src="assets/dashboard.svg" alt=""> Dashboard</a>
         <a href="listProduct.html"> <img src="assets/darfat-product.svg" alt=""> List Product</a>
         <a href="productSold.html"> <img src="assets/Product-Sold.svg" alt=""> Product Sold</a>
-        <a href="editProfile.html"> <img src="assets/Profile.svg" alt=""> Edit Profile</a>
+        <a href="profile.html"> <img src="assets/Profile.svg" alt=""> Profile</a>
+        <a href="editProfile.html"> <img src="assets/Setting.svg" alt=""> Edit Profile</a>
         <a href="" onclick="logOut()"> <img src="assets/Sign_out.svg" alt=""> Log Out</a>
     </div>
 
@@ -190,7 +191,7 @@
                     tr.appendChild(tdName);
     
                     const tdStock = document.createElement('td');
-                    tdStock.innerHTML = data.price
+                    tdStock.innerHTML = FormatMoney(data.price)
                     tr.appendChild(tdStock);
     
                     const tdBy = document.createElement('td');
@@ -198,7 +199,7 @@
                     tr.appendChild(tdBy);
     
                     const tdDate = document.createElement('td');
-                    tdDate.innerHTML = data.total
+                    tdDate.innerHTML = FormatMoney(data.total)
                     tr.appendChild(tdDate);
         
                     const tdAction = document.createElement('td');

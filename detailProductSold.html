@@ -29,16 +29,17 @@
             <img src="assets/down-arrow.svg" class="profile-arrow" alt="">
         </div>
         <span class="dropdown hidden noselect" id="dropdownAfterLogin">
-            <a href="">Edit Profile</a>
+            <a href="profile.html">Profile</a>
             <a onclick="logOut()">Log Out</a>
         </span>
     </nav>
 
     <div class="leftBar">
-        <a href="dashboard.html"> <img src="assets/dashboard.svg" alt=""> Dashboard</a>
+        <a class="active-page" href="dashboard.html"> <img src="assets/dashboard.svg" alt=""> Dashboard</a>
         <a href="listProduct.html"> <img src="assets/darfat-product.svg" alt=""> List Product</a>
         <a href="productSold.html"> <img src="assets/Product-Sold.svg" alt=""> Product Sold</a>
-        <a href="editProfile.html"> <img src="assets/Profile.svg" alt=""> Edit Profile</a>
+        <a href="profile.html"> <img src="assets/Profile.svg" alt=""> Profile</a>
+        <a href="editProfile.html"> <img src="assets/Setting.svg" alt=""> Edit Profile</a>
         <a href="" onclick="logOut()"> <img src="assets/Sign_out.svg" alt=""> Log Out</a>
     </div>
 
@@ -57,7 +58,7 @@
                 <label for="">Date :</label>
                 <input type="text" id="date" onfocus="focuss()" readonly>
                 <label for="">Total Payment :</label>
-                <input type="number" id="tp" onfocus="focuss()" readonly>
+                <input type="text" id="tp" onfocus="focuss()" readonly>
             </form>
 
             <table id="table">
@@ -68,13 +69,6 @@
                     <th onclick="sortByQTY()" class="bold-table">Qty</th>
                     <th onclick="sortByDate()" class="bold-table">Total</th>
                 </tr>
-                <!-- <tr>
-                    <td>1</td>
-                    <td>semen</td>
-                    <td>198</td>
-                    <td>Admin</td>
-                    <td>22/12/2021</td>
-                </tr> -->
 
             </table>
         </div>
@@ -131,7 +125,7 @@
                     }
                 })
 
-        document.getElementById('tp').value = total
+        document.getElementById('tp').value = FormatMoney(total)
 
         tableDataProduct = [];
 
@@ -184,7 +178,7 @@
                     tr.appendChild(tdName);
     
                     const tdStock = document.createElement('td');
-                    tdStock.innerHTML = data.price
+                    tdStock.innerHTML = FormatMoney(data.price)
                     tr.appendChild(tdStock);
     
                     const tdBy = document.createElement('td');

@@ -35,7 +35,7 @@ user.forEach(data => {
 
 document.getElementById('namaLengkap').innerHTML = dataUser.name;
 space = dataUser.name.indexOf(' ');
-document.getElementById('namaDepan').innerHTML = dataUser.name.substring(0 , space);
+document.getElementById('namaDepan').innerHTML = dataUser.username;
 document.getElementById('profileName').innerHTML = dataUser.name.substring(0 , space);
 document.getElementById('email').innerHTML = dataUser.email;
 document.getElementById('phoneNumber').innerHTML = dataUser.phoneNumber;

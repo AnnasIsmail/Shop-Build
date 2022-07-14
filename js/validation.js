@@ -1,4 +1,5 @@
-validationUName = false;
+validationName = false;
+validationUsername = false;
 validationAddress = false;
 validationEmail = false;
 validationDOB = false;
@@ -6,6 +7,7 @@ validationPassword = false;
 validationPhoneNumber = false;
 
 Name = false;
+Username = false;
 Address = false;
 Email = false;
 DOB = false;
@@ -18,18 +20,20 @@ function validationRegister(){
         id = data.id;
     })
 
-    if(validationUName === false || validationAddress === false || validationEmail === false || validationDOB === false || validationPassword === false || validationPhoneNumber === false){
+    if(validationName === false || validationAddress === false || validationEmail === false || validationDOB === false || validationPassword === false || validationPhoneNumber === false || validationUsername === false){
         document.getElementById('errorSubmit').classList.remove('hidden');
         document.getElementById('errorSubmit').innerHTML = 'Pastikan Seluruh Field sudah terisi dengan benar';
     }else{
         result = {
             id: id+1,
             name: Name,
+            username: Username,
             address: Address,
             email: Email,
             DOB: DOB,
             password: Password,
-            phoneNumber: PhoneNumber
+            phoneNumber: PhoneNumber,
+            urlImage: 'assets/default-user.jpg'
         }
 
         dataArray = [];
@@ -61,6 +65,10 @@ function validationRegisterBlur(e){
             validationPassword = false
             document.getElementById('errorAddress').classList.remove('hidden');
             document.getElementById('errorAddress').innerHTML = 'Field Address tidak boleh kosong';
+        }else if(name === 'username'){
+            validationPassword = false
+            document.getElementById('errorUsername').classList.remove('hidden');
+            document.getElementById('errorUsername').innerHTML = 'Field Username tidak boleh kosong';
         }else if(name === 'email'){
             validationEmail = false;
             document.getElementById('errorEmail').classList.remove('hidden');
@@ -133,6 +141,9 @@ function validateLoginChange(e){
         if(name === 'name'){
             Name = value;
             validationNameFunction();
+        }else if(name === 'username'){
+            Username = value;
+            validationUsernameFunction();
         }else if(name === 'address'){
             Address = value;
             validationAddressFunction();
@@ -169,6 +180,8 @@ function validationRegisterFocus(e){
         document.getElementById('errorName').classList.add('hidden');
     }else if(name === 'address'){
         document.getElementById('errorAddress').classList.add('hidden');
+    }else if(name === 'username'){
+        document.getElementById('errorUsername').classList.add('hidden');
     }else if(name === 'email'){
         document.getElementById('errorEmail').classList.add('hidden');
     }else if(name === 'DOB'){
@@ -185,7 +198,25 @@ function validationNameFunction(){
         document.getElementById('errorName').classList.remove('hidden');
         document.getElementById('errorName').innerHTML = 'Name harus berisi lebih dari 8 karakter!';
     }else{
-        validationUName = true;
+        validationName = true;
+    }
+}
+
+function validationUsernameFunction(){
+    if(Username.length < 5 || Username.length > 8){
+        document.getElementById('errorUsername').classList.remove('hidden');
+        document.getElementById('errorUsername').innerHTML = 'Username harus lebih dari 5 dan kurang atau sama dengan 8';
+    }else if(Username.match(/^[A-Z0-9]+$/)){
+        document.getElementById('errorUsername').classList.remove('hidden');
+        document.getElementById('errorUsername').innerHTML = 'Username harus mengandung huruf kecil';
+    }else if(Username.match(/^[a-z0-9]+$/)){
+        document.getElementById('errorUsername').classList.remove('hidden');
+        document.getElementById('errorUsername').innerHTML = 'Username harus mengandung huruf besar';
+    }else if(Username.match(/^[a-zA-Z]+$/)){
+        document.getElementById('errorUsername').classList.remove('hidden');
+        document.getElementById('errorUsername').innerHTML = 'Username harus mengandung angka';
+    }else{
+        validationUsername = true;
     }
 }
 
@@ -330,7 +361,7 @@ function submitLogin(){
             localStorage.setItem('user', JSON.stringify(dataToUser));
             user = dataToUser
 
-            // document.location.href = 'dashboard.html'
+            document.location.href = 'dashboard.html'
         }else if(emailValid === true && passwordValid === false){
             document.getElementById('errorSubmit').classList.remove('hidden');
             document.getElementById('errorSubmit').innerHTML = 'Password salah mohon masukan password dengan sesuai.';

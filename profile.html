@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/detailProduct.css">
 </head>
 <body>
-    
+   
     <nav class="navbar navbar-after-login">
         <div >
             <a href="index.html" class="logo-navbar">
@@ -39,37 +39,28 @@
         <a href="listProduct.html"> <img src="assets/darfat-product.svg" alt=""> List Product</a>
         <a href="productSold.html"> <img src="assets/Product-Sold.svg" alt=""> Product Sold</a>
         <a href="listUser.html"> <img src="assets/users.svg" alt=""> List Users</a>
-        <a href="profile.html"> <img src="assets/Profile.svg" alt=""> Profile</a>
-        <a class="active-page" href="editProfile.html"> <img src="assets/Setting.svg" alt=""> Edit Profile</a>
+        <a class="active-page" href="profile.html"> <img src="assets/Profile.svg" alt=""> Profile</a>
+        <a href="editProfile.html"> <img src="assets/Setting.svg" alt=""> Edit Profile</a>
         <a href="" onclick="logOut()"> <img src="assets/Sign_out.svg" alt=""> Log Out</a>
     </div>
-
     <main>
-        <header><img onclick="goToListProduct()" src="assets/backDetail.svg" alt=""><h1>Edit Profile</h1></header>
+        <header><img onclick="goToListProduct()" src="assets/backDetail.svg" alt=""><h1>Profile</h1></header>
         <form class="container-detail-product" onsubmit="return false">
-            <p class="error-massage hidden oneCol" id="errorSubmit"></p>
-           <label for="">Name :</label>
-           <input type="text" id="name" onfocus="focuss()">
+            <img id="srcImage" alt="" class="oneCol">
+            <label for="">Name :</label>
+           <input type="text" id="name" onfocus="focuss()"readonly>
            <label for="">Username :</label>
            <input type="text" id="username" onfocus="focuss()"readonly>
             <label for="">Address</label>
-            <textarea name="" id="address" rows="3" ></textarea>
+            <textarea name="" id="address" rows="3"readonly ></textarea>
            <label for="">Email :</label>
-           <input type="text" id="email" onfocus="focuss()">
+           <input type="text" id="email" onfocus="focuss()"readonly>
            <label for="">DOB :</label>
-           <input type="date" id="DOB" onfocus="focuss()">
-           <label for="">Password :</label>
-           <input type="password" id="password" >
+           <input type="date" id="DOB" onfocus="focuss()"readonly>
            <label for="">Phone Number :</label>
-           <input type="text" id="pn" >
+           <input type="text" id="pn" readonly>
            <label for="">Last Login :</label>
            <input type="date" id="lastLogin" readonly>
-           <label for="">Photo</label>
-           <input type="file" name="" id="urlImage" onfocus="focuss()">
-           <div class="container-button">
-                <button onclick="goToListProduct()">Cancel</button>
-                <button type="submit" id="submitButton" onclick="submitEdit()">Submit</button>
-           </div>
         </form>
     </main>
 
@@ -97,6 +88,7 @@
         document.getElementById('profileName').innerHTML = dataUser.name.substring(0 , space);
 
        
+        document.getElementById('srcImage').src = dataUser.urlImage;
         document.getElementById('name').value = dataUser.name;
         document.getElementById('username').value = dataUser.username;
         document.getElementById('address').value = dataUser.address;
@@ -130,13 +122,6 @@
 
             if(valid === true){
                 
-                src = dataUser.photo
-    
-                if(document.getElementById('urlImage').value !== ""){
-                    lastIndex = document.getElementById('urlImage').value.lastIndexOf("\\");
-                    src = "assets/" + document.getElementById('urlImage').value.substring(lastIndex+1);
-                }
-
                 password = '';
 
                 if(password === ""){
@@ -148,26 +133,21 @@
                 dataAfterEdit = {
                     id: parseInt(dataUser.id),
                     name: document.getElementById('name').value,
-                    username: document.getElementById('username').value,
                     address: document.getElementById('address').value,
                     email: document.getElementById('email').value,
                     DOB: document.getElementById('DOB').value,
                     password: password,
                     phoneNumber: document.getElementById('pn').value,
-                    lastLogin: dataUser.lastLogin,
-                    urlImage: src
+                    lastLogin: dataUser.lastLogin
                 };
                 
                 dataUserAfterAdd = [];
 
                 user.forEach(data => {
-                    if(data.id === parseInt(dataUser.id)){
-                        dataUserAfterAdd.push(dataAfterEdit);
-                    }else{
-                        dataUserAfterAdd.push(data);
-                    }
+                    dataUserAfterAdd.push(dataAfterEdit);
                 });
 
+                dataUserAfterAdd.push(dataAfterEdit);
 
                 localStorage.setItem('user', JSON.stringify(dataUserAfterAdd));
                 user.push(dataUserAfterAdd);

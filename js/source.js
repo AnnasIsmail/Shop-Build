@@ -1,14 +1,28 @@
  user = [
     {
         id: 1,
+        name: "Owner Shop build",
+        username: 'Owner',
+        address: "Jl. Borobudur 1 Yogyakarta",
+        email: "owner@owner.com",
+        DOB: '2002-12-12',
+        password: 'owner',
+        phoneNumber: '08909988632',
+        lastLogin: '2022-07-12',     
+        urlImage: 'assets/user2.webp'
+    },
+    {
+        id: 2,
         name: "Admin Shop build",
+        username: 'Admin',
         address: "Jl. Pemuda Panjaitan 10 Bekasi Utara",
         email: "admin@admin.com",
         DOB: '2002-12-12',
         password: 'admin',
         phoneNumber: '08123456789',
-        lastLogin: '2022-07-12'     
-    }
+        lastLogin: '2022-07-12',     
+        urlImage: 'assets/user1.jpg'
+    },
  ]
 
  userLocal = localStorage.getItem("user");
