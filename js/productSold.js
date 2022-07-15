@@ -188,34 +188,39 @@ function goToEdit(id){
 }
 
 function goToRemove(id){
+    let text = "Apakah Kamu Yakin Ingin Menghapus Data Ini?";
+    if (confirm(text) == true) {
+        dataArray = [];
+        productSold.forEach(data => {
     
-    dataArray = [];
-    productSold.forEach(data => {
+            if(parseInt(data.id) === parseInt(id)){
+                
+            }else{
+                dataArray.push(data);
+            }
+    
+            localStorage.setItem('productSold', JSON.stringify(dataArray));
+            productSold = dataArray;
+    
+        });
+    
+        dataArrayDetail = [];
+        detailProductSold.forEach(data=>{
+            if(parseInt(data.idSold) === parseInt(id)){
+                
+            }else{
+                dataArrayDetail.push(data);
+            }
+    
+            localStorage.setItem('detailProductSold', JSON.stringify(dataArrayDetail));
+            productSold = dataArrayDetail;
+            location.reload();
+    
+        })
+    } else {
 
-        if(parseInt(data.id) === parseInt(id)){
-            
-        }else{
-            dataArray.push(data);
-        }
+    }
 
-        localStorage.setItem('productSold', JSON.stringify(dataArray));
-        productSold = dataArray;
-
-    });
-
-    dataArrayDetail = [];
-    detailProductSold.forEach(data=>{
-        if(parseInt(data.idSold) === parseInt(id)){
-            
-        }else{
-            dataArrayDetail.push(data);
-        }
-
-        localStorage.setItem('detailProductSold', JSON.stringify(dataArrayDetail));
-        productSold = dataArrayDetail;
-        location.reload();
-
-    })
 }
 
 function goToAddNewData(){

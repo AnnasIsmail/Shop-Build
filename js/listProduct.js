@@ -166,18 +166,25 @@ function goToEdit(id){
 }
 
 function goToRemove(id){
-    dataArray = [];
-    product.forEach(data =>{
-        if(parseInt(data.id) === parseInt(id)){
 
-        }else{
-            dataArray.push(data);
-        }
-    })
+    let text = "Apakah Kamu Yakin Ingin Menghapus Data Ini?";
+    if (confirm(text) == true) {
+        dataArray = [];
+        product.forEach(data =>{
+            if(parseInt(data.id) === parseInt(id)){
+    
+            }else{
+                dataArray.push(data);
+            }
+        })
+    
+        localStorage.setItem('product', JSON.stringify(dataArray));
+        product = dataArray;
+        location.reload();
+    } else {
 
-    localStorage.setItem('product', JSON.stringify(dataArray));
-    product = dataArray;
-    location.reload();
+    }
+
 }
 
 function goToAddNewData(){

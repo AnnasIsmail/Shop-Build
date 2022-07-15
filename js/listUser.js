@@ -143,19 +143,25 @@ function goToDetail(id){
 }
 
 function goToRemove(id){
-    dataArray = [];
-    user.forEach(data =>{
-        if(parseInt(data.id) === parseInt(id)){
+    let text = "Apakah Kamu Yakin Ingin Menghapus Data Ini?";
+    if (confirm(text) == true) {
+        dataArray = [];
+        user.forEach(data =>{
+            if(parseInt(data.id) === parseInt(id)){
+    
+            }else{
+                dataArray.push(data);
+            }
+        })
+    
+        console.log(dataArray)
+    
+        localStorage.setItem('user', JSON.stringify(dataArray));
+        user = dataArray;
+        location.reload();
+    } else {
 
-        }else{
-            dataArray.push(data);
-        }
-    })
-
-    console.log(dataArray)
-
-    localStorage.setItem('user', JSON.stringify(dataArray));
-    user = dataArray;
-    location.reload();
+    }
+  
 }
 
