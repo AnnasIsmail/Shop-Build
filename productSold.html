@@ -288,15 +288,16 @@
 
             });
 
+            dataArrayDetail = [];
             detailProductSold.forEach(data=>{
                 if(parseInt(data.idSold) === parseInt(id)){
                     
                 }else{
-                    dataArray.push(data);
+                    dataArrayDetail.push(data);
                 }
 
-                localStorage.setItem('detailProductSold', JSON.stringify(dataArray));
-                productSold = dataArray;
+                localStorage.setItem('detailProductSold', JSON.stringify(dataArrayDetail));
+                productSold = dataArrayDetail;
                 location.reload();
 
             })

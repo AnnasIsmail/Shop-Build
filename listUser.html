@@ -54,10 +54,10 @@
             <table id="table" class="list-user">
                 <tr class="border-header">
                     <th onclick="sortByNo()" class="bold-table">No</th>
-                    <th onclick="sortByName()" class="bold-table">Foto</th>
-                    <th onclick="sortByStock()" class="bold-table">Name</th>
-                    <th onclick="sortByCB()" class="bold-table">Email</th>
-                    <th onclick="sortByDate()" class="bold-table">Username</th>
+                    <th class="bold-table">Foto</th>
+                    <th onclick="sortByName()" class="bold-table">Name</th>
+                    <th onclick="sortByEmail()" class="bold-table">Email</th>
+                    <th onclick="sortByUsername()" class="bold-table">Username</th>
                     <th class="bold-table">Action</th>
                 </tr>
                 <!-- <tr>
@@ -100,10 +100,10 @@
             document.getElementById('table').innerHTML = `            
                 <tr class="border-header">
                     <th onclick="sortByNo()" class="bold-table">No</th>
-                    <th onclick="sortByName()" class="bold-table">Foto</th>
-                    <th onclick="sortByStock()" class="bold-table">Name</th>
-                    <th onclick="sortByCB()" class="bold-table">Email</th>
-                    <th onclick="sortByDate()" class="bold-table">Username</th>
+                    <th class="bold-table">Foto</th>
+                    <th onclick="sortByName()" class="bold-table">Name</th>
+                    <th onclick="sortByEmail()" class="bold-table">Email</th>
+                    <th onclick="sortByUsername()" class="bold-table">Username</th>
                     <th class="bold-table">Action</th>
                 </tr>`;
 
@@ -147,14 +147,14 @@
         tampilData(user);
 
         function sortByNo(){
-            product.sort((a, b) => {
+            user.sort((a, b) => {
                 return a.id - b.id;
             });
-            tampilData(product);
+            tampilData(user);
         }
 
         function sortByName(){
-            product.sort((a, b) => {
+            user.sort((a, b) => {
                 let fa = a.name.toLowerCase(),
                     fb = b.name.toLowerCase();
 
@@ -166,35 +166,13 @@
                 }
                 return 0;
             });
-            tampilData(product);
+            tampilData(user);
         }
 
-        function sortByStock(){
-            product.sort((a, b) => {
-                return a.stock - b.stock;
-            });
-            tampilData(product);
-        }
-
-        function sortByCB(){
-            product.sort((a, b) => {
-
-                nameA = '';
-                user.forEach(dataUser =>{
-                    if(a.createdBy === dataUser.id){
-                        nameA = dataUser.name
-                    }
-                })
-
-                nameB = '';
-                user.forEach(dataUser =>{
-                    if(b.createdBy === dataUser.id){
-                        nameB = dataUser.name
-                    }
-                })
-
-                let fa = nameA.toLowerCase(),
-                    fb = nameB.toLowerCase();
+        function sortByEmail(){
+            user.sort((a, b) => {
+                let fa = a.email.toLowerCase(),
+                    fb = b.email.toLowerCase();
 
                 if (fa < fb) {
                     return -1;
@@ -204,16 +182,23 @@
                 }
                 return 0;
             });
-            tampilData(product);
+            tampilData(user);
         }
 
-        function sortByDate(){
-            product.sort((a, b) => {
-                let da = new Date(a.createdDate),
-                    db = new Date(b.createdDate);
-                return da - db;
+        function sortByUsername(){
+            user.sort((a, b) => {
+                let fa = a.username.toLowerCase(),
+                    fb = b.username.toLowerCase();
+
+                if (fa < fb) {
+                    return -1;
+                }
+                if (fa > fb) {
+                    return 1;
+                }
+                return 0;
             });
-            tampilData(product);
+            tampilData(user);
         }
 
         function searchData(){

@@ -6,11 +6,11 @@ product.forEach(element => {
 });
 
 detailProductSold.forEach(data =>{
-    jumlahTerjual += data.qty
+    jumlahTerjual += parseInt(data.qty)
 })
 
 document.getElementById('jumlahProduct').innerHTML = product.length;
-document.getElementById('totalStock').innerHTML = jumlahStock;
+document.getElementById('jumlahUser').innerHTML = user.length;
 document.getElementById('produkTerjual').innerHTML = jumlahTerjual;
 
 jumlahKeuntungan = 0;

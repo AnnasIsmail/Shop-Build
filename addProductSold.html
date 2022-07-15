@@ -35,16 +35,17 @@
     </nav>
 
     <div class="leftBar">
-        <a class="active-page" href="dashboard.html"> <img src="assets/dashboard.svg" alt=""> Dashboard</a>
+        <a href="dashboard.html"> <img src="assets/dashboard.svg" alt=""> Dashboard</a>
         <a href="listProduct.html"> <img src="assets/darfat-product.svg" alt=""> List Product</a>
         <a href="productSold.html"> <img src="assets/Product-Sold.svg" alt=""> Product Sold</a>
+        <a href="listUser.html"> <img src="assets/users.svg" alt=""> List Users</a>
         <a href="profile.html"> <img src="assets/Profile.svg" alt=""> Profile</a>
         <a href="editProfile.html"> <img src="assets/Setting.svg" alt=""> Edit Profile</a>
         <a href="" onclick="logOut()"> <img src="assets/Sign_out.svg" alt=""> Log Out</a>
     </div>
 
-    <main class="list-product">
-        <header><h1>Edit Product Sold</h1></header>
+    <main>
+        <header><img onclick="goToProductSold()" src="assets/backDetail.svg" alt=""><h1>Add Product Sold</h1></header>
         <div class="container-list-product">
 
             <form class="container-detail-product" onsubmit="return false">
@@ -53,6 +54,8 @@
                 <input type="text" id="name" onfocus="focuss()">
                 <label for="">No Handphone :</label>
                 <input type="number" id="nhp" onfocus="focuss()">
+                <label for="">Total Payment :</label>
+                <input type="text" id="tp" readonly>
             </form>
 
             <table id="table">
@@ -120,11 +123,6 @@
         });
 
 
-        total = 0;
-        
-        function getDataProduct(){
-
-
         product.forEach((data , index) => {
             
             let select = document.createElement('option');
@@ -133,6 +131,28 @@
             document.getElementById('products').appendChild(select);
 
         });
+        
+        function getDataProduct(){
+
+            total = 0;
+        
+        detailProductSold.forEach(dataDetail =>{
+            if(parseInt(addProductSoldId) === dataDetail.idSold){
+                price = 0;
+                product.forEach(dataProduct =>{
+                    if(dataDetail.idProduct === dataProduct.id){
+                        price = dataProduct.price
+                    }
+                })
+
+                total += price*dataDetail.qty;
+            }
+        })
+
+
+    document.getElementById('tp').value = FormatMoney(total)
+
+
 
         tableDataProduct = [];
 
@@ -273,6 +293,13 @@
                          res = false;
                     }else{
                         res = true;
+                        tableDataProduct.forEach(data => {
+                            if(data.namaProduct === document.getElementById("products").options[document.getElementById("products").selectedIndex].text){
+                                document.getElementById('errorSubmit').classList.remove('hidden');
+                                document.getElementById('errorSubmit').innerHTML = 'Mohon Masukan Produk secara berkala. tidak dapat memasukan dua produk yang sama dalam satu transaksi.';
+                                res = false;
+                            }
+                        });
                     }
                 })
 
@@ -290,6 +317,7 @@
         }
 
         function addData(){
+            focuss();
             valid = validationAddData();
             console.log(valid)
             if(valid === true){
@@ -307,6 +335,8 @@
                 localStorage.setItem('detailProductSold', JSON.stringify(dataArray));
                 detailProductSold = dataArray;
     
+                document.getElementById("qty").value = '';
+                document.getElementById("products").selectedIndex = 0;
                 getDataProduct()
                 tampilData(tableDataProduct);
             }

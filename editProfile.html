@@ -45,7 +45,7 @@
     </div>
 
     <main>
-        <header><img onclick="goToListProduct()" src="assets/backDetail.svg" alt=""><h1>Edit Profile</h1></header>
+        <header><h1>Edit Profile</h1></header>
         <form class="container-detail-product" onsubmit="return false">
             <p class="error-massage hidden oneCol" id="errorSubmit"></p>
            <label for="">Name :</label>
@@ -67,7 +67,7 @@
            <label for="">Photo</label>
            <input type="file" name="" id="urlImage" onfocus="focuss()">
            <div class="container-button">
-                <button onclick="goToListProduct()">Cancel</button>
+                <button onclick="goToProfile()">Cancel</button>
                 <button type="submit" id="submitButton" onclick="submitEdit()">Submit</button>
            </div>
         </form>
@@ -105,8 +105,8 @@
         document.getElementById('pn').value = dataUser.phoneNumber;
         document.getElementById('lastLogin').value = dataUser.lastLogin;
         
-        function goToListProduct(){
-            document.location.href = 'dashboard.html';
+        function goToProfile(){
+            document.location.href = 'profile.html';
         }        
 
         function validation(){
@@ -171,7 +171,7 @@
 
                 localStorage.setItem('user', JSON.stringify(dataUserAfterAdd));
                 user.push(dataUserAfterAdd);
-                goToListProduct();
+                goToProfile();
             }
         }
 

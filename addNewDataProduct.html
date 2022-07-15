@@ -35,16 +35,17 @@
     </nav>
 
     <div class="leftBar">
-        <a class="active-page" href="dashboard.html"> <img src="assets/dashboard.svg" alt=""> Dashboard</a>
+        <a href="dashboard.html"> <img src="assets/dashboard.svg" alt=""> Dashboard</a>
         <a href="listProduct.html"> <img src="assets/darfat-product.svg" alt=""> List Product</a>
         <a href="productSold.html"> <img src="assets/Product-Sold.svg" alt=""> Product Sold</a>
+        <a href="listUser.html"> <img src="assets/users.svg" alt=""> List Users</a>
         <a href="profile.html"> <img src="assets/Profile.svg" alt=""> Profile</a>
         <a href="editProfile.html"> <img src="assets/Setting.svg" alt=""> Edit Profile</a>
         <a href="" onclick="logOut()"> <img src="assets/Sign_out.svg" alt=""> Log Out</a>
     </div>
 
     <main>
-        <header><h1>Add New Data Product</h1></header>
+        <header><img onclick="goToListProduct()" src="assets/backDetail.svg" alt=""><h1>Add New Data Product</h1></header>
         <form class="container-detail-product" onsubmit="return false">
             <p class="error-massage hidden oneCol" id="errorSubmit"></p>
             <label for="">Name :</label>

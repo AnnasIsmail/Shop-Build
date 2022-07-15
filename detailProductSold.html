@@ -35,16 +35,17 @@
     </nav>
 
     <div class="leftBar">
-        <a class="active-page" href="dashboard.html"> <img src="assets/dashboard.svg" alt=""> Dashboard</a>
+        <a href="dashboard.html"> <img src="assets/dashboard.svg" alt=""> Dashboard</a>
         <a href="listProduct.html"> <img src="assets/darfat-product.svg" alt=""> List Product</a>
         <a href="productSold.html"> <img src="assets/Product-Sold.svg" alt=""> Product Sold</a>
+        <a href="listUser.html"> <img src="assets/users.svg" alt=""> List Users</a>
         <a href="profile.html"> <img src="assets/Profile.svg" alt=""> Profile</a>
         <a href="editProfile.html"> <img src="assets/Setting.svg" alt=""> Edit Profile</a>
         <a href="" onclick="logOut()"> <img src="assets/Sign_out.svg" alt=""> Log Out</a>
     </div>
 
-    <main class="list-product">
-        <header><h1>Detail Product Sold</h1></header>
+    <main>
+        <header><img onclick="goToProductSold()" src="assets/backDetail.svg" alt=""><h1>Detail Product Sold</h1></header>
         <div class="container-list-product">
 
             <form class="container-detail-product" onsubmit="return false">
@@ -186,7 +187,7 @@
                     tr.appendChild(tdBy);
     
                     const tdDate = document.createElement('td');
-                    tdDate.innerHTML = data.total
+                    tdDate.innerHTML = FormatMoney(data.total)
                     tr.appendChild(tdDate);
         
                     document.getElementById('table').appendChild(tr);
@@ -235,8 +236,6 @@
             tampilData(tableDataProduct);
         }
 
-
-
         function sortByDate(){
             tableDataProduct.sort((a, b) => {
                 return a.total - b.total;
@@ -244,7 +243,10 @@
             tampilData(tableDataProduct);
         }
 
+        function goToProductSold(){
+            document.location.href = 'productSold.html';
 
+        }
 
     </script>
 </body>
